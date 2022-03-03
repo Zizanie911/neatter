@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   get "profile", to: 'dashboard#profile', as: :profile
   get "review", to: 'nextday#review', as: :review
+  post "reset", to: 'nextday#reset', as: :reset
 end
 
 
