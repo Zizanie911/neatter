@@ -26,6 +26,18 @@ class TasksController < ApplicationController
     end
   end
 
+  def edit
+    @task = Task.find(params[:id])
+    authorize @task
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    @task.update(task_params)
+    authorize @task
+    redirect_to task_path(@task)
+  end
+
   def mark_as_done
     @task = Task.find(params[:id])
     authorize @task
