@@ -1,0 +1,21 @@
+.navbar-lewagon {
+  justify-content: space-between;
+  background: white;
+  height: 70px;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.text-nav-top {
+  display: flex;
+  justify-content: center;
+  color: #358aa7;
+  font-weight: bold;
+}
+
+.size-icon {
+  height: 20px;
+  width: 20px;
+}

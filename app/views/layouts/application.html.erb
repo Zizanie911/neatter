@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Neatter</title>
+    <title>Neatt</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,10 +12,18 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+  <body class="<%= params[:controller]%>-<%= params[:action]%>">
+    <% if  params[:action] != "home" %>
+
+      <%= render 'shared/navbartop' %>
+      <%= render 'shared/flashes' %>
+    <% end %>
 
     <%= yield %>
+    <% if params[:action] == "profile" %>
+      <%= render 'shared/navbartwo' %>
+    <% elsif params[:action] != "home" %>
+      <%= render 'shared/navbar' %>
+    <% end %>
   </body>
 </html>

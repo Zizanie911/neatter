@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>New Task</h1>
+  <%= simple_form_for(@task) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :details %>
+    <%= f.input :start_at %>
+    <%= f.input :priority %>
+    <%= f.input :duration, placeholder: "minutes", input_html: { min: '0', step: '15' } %>
+    <%= f.input :habit, as: :boolean, input_html: { class: "toggle" }  %>
+    <%= f.input :days,
+                collection: Date::DAYNAMES.map { |day_name| [day_name, Date::DAYNAMES.index(day_name)] },
+                as: :check_boxes,
+                include_hidden: false,
+                input_html: { class: "tag-selector" },
+                item_wrapper_class: 'tag-item'
+    %>
+    <%= f.submit class: "btn-ghost" %>
+  <% end %>
+</div>

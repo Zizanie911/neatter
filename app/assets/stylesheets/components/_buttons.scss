@@ -1,0 +1,24 @@
+.btn-ghost {
+  color: #4A4A4A;
+  border: 1px solid #4A4A4A;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.btn-ghost:hover {
+  opacity: 1;
+}
+
+.add-button {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  background-color: #358aa7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}

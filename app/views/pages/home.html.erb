@@ -1,2 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container text-center home-container size-min-screen">
+  <div class="">
+    <h1>Neatt</h1>
+    <h2>Free to plan your life day by day </h2>
+    <%= link_to "Go to my tasks", tasks_path, class: "btn btn-ghost mt-5"%>
+    <%= link_to "Log in", new_user_session_path, class: "btn btn-ghost mt-5"%>
+    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-ghost mt-5" %>
+  </div>
+</div>
