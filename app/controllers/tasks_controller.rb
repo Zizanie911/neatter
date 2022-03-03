@@ -16,7 +16,12 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    if task_params[:start_at].present?
+      @task = Task.new(task_params)
+    else
+      task_params[:start_at] = Date.today
+      @task = Task.new(task_params)
+    end
     @task.user = current_user
     authorize @task
     if @task.save
