@@ -6,9 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "Destroying old seeds..."
+
 User.destroy_all
 
-puts "Creating 1 user and 3 tasks..."
+puts "Creating 1 user and 4 tasks..."
 
 user = User.new(
   email: "beatrice@gmail.com",
@@ -31,6 +33,13 @@ task.save!
 task = Task.new(
   name: "Send email to Matthieu",
   details: "matthieu@gmail.com",
+  priority: true
+)
+task.user = user
+task.save!
+
+task = Task.new(
+  name: "Book hotel",
   priority: true
 )
 task.user = user

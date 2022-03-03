@@ -1,6 +1,11 @@
 class Task < ApplicationRecord
   attr_accessor :habit
 
+  scope :regular_tasks, -> { where(days: nil) }
+  scope :habits, -> { where.not(days: nil) }
+  scope :done, -> { where(mark_as_done: true) }
+  scope :not_done, -> { where(mark_as_done: false) }
+
   belongs_to :user
 
   validates :name, presence: true

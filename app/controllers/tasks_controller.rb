@@ -4,8 +4,8 @@ class TasksController < ApplicationController
     @user = current_user
     @username = @user.username
     @total = nb_total_tasks
-    @nb_habits = nb_habits
-    @nb_tasks = nb_tasks
+    @nb_habits_not_done = Task.habits.not_done.count
+    @nb_tasks_not_done = Task.regular_tasks.not_done.count
     @estimated_time = estimated_time
     @regular_tasks = regular_tasks
   end
@@ -62,7 +62,7 @@ class TasksController < ApplicationController
 
   def estimated_time
     t = 0
-    @tasks.each do |task|
+    @tasks.not_done.each do |task|
       t += task.duration unless task.duration.nil?
     end
     return "00:00" if t.zero?
