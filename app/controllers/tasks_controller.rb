@@ -31,7 +31,12 @@ class TasksController < ApplicationController
     authorize @task
     @task.mark_as_done = !@task.mark_as_done
     @task.save
-    redirect_to tasks_path
+
+    if params[:source] == 'review'
+      redirect_to review_path
+    else
+      redirect_to tasks_path
+    end
   end
 
   private
