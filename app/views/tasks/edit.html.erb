@@ -2,24 +2,25 @@
 
 <%= simple_form_for(@task) do |f| %>
     <%= f.input :name %>
-    <%= f.input :details %>
-    <%= f.input :start_at, as: :string,
-                required: false,
-                wrapper_html: { data: {controller: "task-calendar"} }, input_html: { data: {task_calendar_target:"date", action:"click->task-calendar#showCalendar"} } %>
+    <div data-controller="display-toggle">
+      <%= f.input :details, wrapper_html: { data: {display_toggle_target: "dayElement" } } %>
+      <%= f.input :days, wrapper_html: { class: "d-none", data: {display_toggle_target: "dayElement" } },
+                  collection: Date::DAYNAMES.map { |day_name| [day_name, Date::DAYNAMES.index(day_name)] },
+                  as: :check_boxes,
+                  include_hidden: false,
+                  input_html: { class: "tag-selector" },
+                  item_wrapper_class: "tag-item"
+      %>
+      <%= f.input :start_at, as: :string,
+                  required: false,
+                  wrapper_html: { data: {controller: "task-calendar"} }, input_html: { data: {task_calendar_target:"date", action:"click->task-calendar#showCalendar"} } %>
+      <%= f.input :duration, placeholder: "minutes", input_html: { min: '0', step: '15' } %>
+      <%= f.input :habit, as: :boolean, input_html: { data: { action:"click->display-toggle#toggleClassForHabits" }, class: "toggle" }  %>
+    </div>
     <%= f.input :priority, input_html: { class: "toggle" } %>
-    <%= f.input :duration, placeholder: "minutes", input_html: { min: '0', step: '15' } %>
-    <%= f.input :habit, as: :boolean, input_html: { class: "toggle" }  %>
-    <%= f.input :days,
-                collection: Date::DAYNAMES.map { |day_name| [day_name, Date::DAYNAMES.index(day_name)] },
-                label: "",
-                as: :check_boxes,
-                include_hidden: false,
-                input_html: { class: "tag-selector" },
-                item_wrapper_class: 'tag-item'
-    %>
     <%= f.submit class: "btn-ghost" %>
   <% end %>
-z
+
 <hr>
 <%= link_to tasks_path do %>
   <i class="fa fa-history"></i> Back to list
