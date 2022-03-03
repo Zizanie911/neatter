@@ -22,7 +22,7 @@
     <%= yield %>
     <% if params[:action] == "profile" %>
       <%= render 'shared/navbartwo' %>
-    <% elsif params[:action] != "home" %>
+    <% elsif params[:action] != "home" && params[:action] != "review" %>
       <%= render 'shared/navbar' %>
     <% end %>
   </body>
