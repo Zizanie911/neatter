@@ -11,6 +11,7 @@
     <%= f.input :habit, as: :boolean, input_html: { class: "toggle" }  %>
     <%= f.input :days,
                 collection: Date::DAYNAMES.map { |day_name| [day_name, Date::DAYNAMES.index(day_name)] },
+                label: "",
                 as: :check_boxes,
                 include_hidden: false,
                 input_html: { class: "tag-selector" },
