@@ -5,22 +5,16 @@
   <div class="dash">
     <div class="centrer-div-h4"><h4 class= "dashboard-h4 " >All</h4></div>
     <div class= "flex-dashboard">
-      <% @days_abbr.each do |day_abbr| %>
-        <% @opacity_coeff.each do |date, counter| %>
-          <% if day_abbr != day_time(date) %>
-            <div >
-              <div class=" item-dashboard"><%= day_abbr %></div>
-              <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-10 color-icon"></i></div>
-            </div>
-            <% @day + 1.day %>
+      <% @week_days.each do |week_day| %>
+        <div>
+          <div class=" item-dashboard"><%= day_time(week_day) %></div>
+          <% week_day_coef = @opacity_coeff[week_day] %>
+          <% if week_day_coef %>
+            <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-<%=(week_day_coef * 100).to_i%> color-icon"></i></div>
           <% else %>
-            <div>
-              <div class=" item-dashboard"><%= day_abbr %></div>
-              <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-<%=(counter * 100).to_i%> color-icon"></i></div>
-              <% @day + 1.day %>
-            </div>
+            <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-10 color-icon"></i></div>
           <% end %>
-        <% end %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -28,46 +22,35 @@
   <div class="dash">
     <div class="centrer-div-h4"><h4 class= "dashboard-h4 " >Tasks</h4></div>
     <div class= "flex-dashboard">
-      <% @days_abbr.each do |day_abbr| %>
-        <% @opacity_coeff_tasks.each do |date, counter| %>
-          <% if day_abbr != day_time(date) %>
-            <div >
-              <div class=" item-dashboard"><%= day_abbr %></div>
-              <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-10  color-icon"></i></div>
-            </div>
-            <% @day + 1.day %>
+      <% @week_days.each do |week_day| %>
+        <div>
+          <div class=" item-dashboard"><%= day_time(week_day) %></div>
+          <% week_day_coef = @opacity_coeff_tasks[week_day] %>
+          <% if week_day_coef %>
+            <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-<%=(week_day_coef * 100).to_i%> color-icon"></i></div>
           <% else %>
-            <div>
-              <div class=" item-dashboard"><%= day_abbr %></div>
-              <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-<%=(counter * 100).to_i%> color-icon"></i></div>
-              <% @day + 1.day %>
-            </div>
+            <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-10 color-icon"></i></div>
           <% end %>
-        <% end %>
+        </div>
       <% end %>
     </div>
   </div>
 
-   <div class="dash">
-    <div class="centrer-div-h4"><h4 class= "dashboard-h4 " >Habits</h4></div>
-    <div class= "flex-dashboard">
-      <% @days_abbr.each do |day_abbr| %>
-        <% @opacity_coeff_habits.each do |date, counter| %>
-          <% if day_abbr != day_time(date) %>
-            <div >
-              <div class=" item-dashboard"><%= day_abbr %></div>
+  <div class="dash">
+      <div class="centrer-div-h4"><h4 class= "dashboard-h4 " >Habits</h4></div>
+      <div class= "flex-dashboard">
+        <% @week_days.each do |week_day| %>
+          <div>
+            <div class=" item-dashboard"><%= day_time(week_day) %></div>
+            <% week_day_coef = @opacity_coeff_habits[week_day] %>
+            <% if week_day_coef %>
+              <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-<%=(week_day_coef * 100).to_i%> color-icon"></i></div>
+            <% else %>
               <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-10 color-icon"></i></div>
-            </div>
-            <% @day + 1.day %>
-          <% else %>
-            <div>
-              <div class=" item-dashboard"><%= day_abbr %></div>
-              <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-<%=(counter * 100).to_i%> color-icon"></i></div>
-              <% @day + 1.day %>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

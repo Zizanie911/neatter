@@ -49,8 +49,15 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-  def duplicate_to_next_day
+  # def duplicate_to_next_day
+  #   copie = task.clone
+  #   copie.user = current_user
+  #   copie.save
+  # end
 
+# a corriger :
+  def tasks_of_the_day
+    current_user.tasks.where(start_at: Date.today)
   end
 
   private

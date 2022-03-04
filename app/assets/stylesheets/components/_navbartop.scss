@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: $light-gray;
   height: 70px;
 }
 
@@ -11,11 +11,12 @@
 .text-nav-top {
   display: flex;
   justify-content: center;
-  color: #358aa7;
+  color: $blue;
   font-weight: bold;
 }
 
 .size-icon {
   height: 20px;
   width: 20px;
+  text-decoration: none;
 }

@@ -1,26 +1,27 @@
-<div class="container">
-<%= render "hey" %>
-<%= render "estimated_time" %>
+<div class="container" style="padding-bottom: 100px">
+  <%= render "hey" %>
+  <%= render "estimated_time" %>
 
-<h4 class="index">TOP PRIORITY</h3>
-<ul>
-  <div class="list-container">
-    <% @tasks.where(priority: true).order(:mark_as_done).each do |task| %>
-      <%= render 'task_form', task: task %>
-    <% end %>
-  </div>
-</ul>
+  <h5 class="index text-center">TOP PRIORITY</h5>
 
-<h4 class="index">TASKS</h3>
-<ul>
-  <div class="list-container">
-    <% @tasks.where(priority: false).order(:mark_as_done).each do |task|%>
-      <%= render 'task_form', task: task %>
- <% end %>
-  </div>
-</ul>
+  <ul style="padding-left: 0;">
+    <div class="list-container">
+      <% @tasks.where(priority: true).order(:mark_as_done).each do |task| %>
+        <%= render 'task_form', task: task %>
+      <% end %>
+    </div>
+  </ul>
+  <hr>
+  <h5 class="index text-center">TASKS</h5>
+  <ul style="padding-left: 0;">
+    <div class="list-container">
+      <% @tasks.where(priority: false).order(:mark_as_done).each do |task|%>
+        <%= render 'task_form', task: task %>
+      <% end %>
+    </div>
+  </ul>
 
-<script>
-  document.querySelectorAll(".form-check-label.boolean.optional").forEach(element => element.innerHTML = "")
-</script>
+  <script>
+    document.querySelectorAll(".form-check-label.boolean.optional").forEach(element => element.innerHTML = "")
+  </script>
 </div>
