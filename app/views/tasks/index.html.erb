@@ -3,7 +3,7 @@
 <%= render "estimated_time" %>
 
 <h4 class="index">TOP PRIORITY</h3>
-<ul class="pl-0">
+<ul>
   <div class="list-container">
     <% @tasks.where(priority: true).not_done.each do |task|%>
       <%= simple_form_for task,
@@ -44,7 +44,7 @@
 </ul>
 
 <h4 class="index">TASKS</h3>
-<ul class="pl-0">
+<ul>
   <div class="list-container">
     <% @tasks.where(priority: false).not_done.each do |task|%>
       <%= simple_form_for task,
