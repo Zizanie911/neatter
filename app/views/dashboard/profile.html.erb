@@ -10,15 +10,15 @@
 
   <% @days_abbr.each do |day_abbr| %>
     <% @opacity_coeff.each do |date, counter| %>
-      <% if day_abbr != date %>
+      <% if day_abbr != day_time(date) %>
         <div>
-          <div><%= day_time(date) %></div>
+          <div><%= day_abbr %></div>
           <div> <i class="fas fa-circle opacity-10 "></i></div>
         </div>
         <% @day + 1.day %>
       <% else %>
         <div>
-          <div><%= day_time(date) %></div>
+          <div><%= day_abbr %></div>
           <div> <i class="fas fa-circle opacity-<%=(counter * 100).to_i%>"></i></div>
           <% @day + 1.day %>
         </div>
