@@ -5,40 +5,8 @@
 <h4 class="index">TOP PRIORITY</h3>
 <ul class="pl-0">
   <div class="list-container">
-    <% @tasks.where(priority: true).not_done.each do |task|%>
-      <%= simple_form_for task,
-          url: mark_as_done_task_path(task),
-          namespace: "task_#{task.id}",
-          html: {
-            class: "form-inline",
-            data: { controller: 'check-task' }
-          } do |f|  %>
-          <%= link_to edit_task_path(task) do %>
-          <div class="task-box task-list d-flex align-items-center">
-            <%= f.input :mark_as_done, as: :boolean, input_html: { 'data-action': 'change->check-task#submit'} %>
-            <%= task.name %>
-          </div>
-        <% end %>
-
-        <%= f.submit "ok", class: "d-none", 'data-check-task-target': 'submitBtn' %>
-      <% end %>
-    <% end %>
-    <% @tasks.where(priority: true).done.each do |task|%>
-      <%= simple_form_for task,
-          url: mark_as_done_task_path(task),
-          namespace: "task_#{task.id}",
-          html: {
-            class: "form-inline",
-            data: { controller: 'check-task' }
-          } do |f|  %>
-          <%= link_to edit_task_path(task) do %>
-            <div class="task-box task-list d-flex align-items-center">
-              <%= f.input :mark_as_done, as: :boolean, label: task.name, input_html: { 'data-action': 'change->check-task#submit'} %>
-              <%= task.name %>
-            </div>
-        <% end %>
-        <%= f.submit "ok", class: "d-none", 'data-check-task-target': 'submitBtn' %>
-      <% end %>
+    <% @tasks.where(priority: true).order(:mark_as_done).each do |task| %>
+      <%= render 'task_form', task: task %>
     <% end %>
   </div>
 </ul>
@@ -46,37 +14,9 @@
 <h4 class="index">TASKS</h3>
 <ul class="pl-0">
   <div class="list-container">
-    <% @tasks.where(priority: false).not_done.each do |task|%>
-      <%= simple_form_for task,
-          url: mark_as_done_task_path(task),
-          namespace: "task_#{task.id}",
-          html: {
-            class: "form-inline",
-            data: { controller: 'check-task' }
-          } do |f|  %>
-          <%= link_to edit_task_path(task) do %>
-            <div class="task-box task-list d-flex align-items-center">
-              <%= f.input :mark_as_done, as: :boolean, label: task.name, input_html: { 'data-action': 'change->check-task#submit'} %>
-              <%= task.name %>
-            </div>
-            <% end %>
-        <%= f.submit "ok", class: "d-none", 'data-check-task-target': 'submitBtn' %>
-      <% end %>
-    <% end %>
-    <% @tasks.where(priority: false).done.each do |task|%>
-      <%= simple_form_for task,
-          url: mark_as_done_task_path(task),
-          namespace: "task_#{task.id}",
-          html: {
-            class: "form-inline",
-            data: { controller: 'check-task' }
-          } do |f|  %>
-            <div class="task-box task-list">
-              <%= f.input :mark_as_done, as: :boolean, label: task.name, input_html: { 'data-action': 'change->check-task#submit'} %>
-            </div>
-        <%= f.submit "ok", class: "d-none", 'data-check-task-target': 'submitBtn' %>
-      <% end %>
-    <% end %>
+    <% @tasks.where(priority: false).order(:mark_as_done).each do |task|%>
+      <%= render 'task_form', task: task %>
+ <% end %>
   </div>
 </ul>
 
