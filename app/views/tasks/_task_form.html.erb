@@ -1,0 +1,15 @@
+<%= simple_form_for task,
+    url: mark_as_done_task_path(task),
+    namespace: "task_#{task.id}",
+    html: {
+      class: "form-inline",
+      data: { controller: 'check-task' }
+    } do |f|  %>
+    <div class="task-box task-list d-flex">
+      <%= f.input :mark_as_done, as: :boolean, input_html: { 'data-action': 'change->check-task#submit'} %>
+      <%= link_to edit_task_path(task) do %>
+        <%= truncate(task.name, length: 30) %>
+      <% end %>
+    </div>
+  <%= f.submit "ok", class: "d-none", 'data-check-task-target': 'submitBtn' %>
+<% end %>

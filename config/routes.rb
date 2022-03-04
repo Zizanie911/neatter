@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       patch :mark_as_done
     end
   end
+
   get "profile", to: 'dashboard#profile', as: :profile
   get "review", to: 'nextday#review', as: :review
   post "reset", to: 'nextday#reset', as: :reset
