@@ -1,18 +1,18 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static target = ["markAsDoneBtn, postponeBtn, submitBtn"]
+  static targets = ["markAsDoneBtn", "postponeBtn", "submitBtn"]
 
   connect() {
-    console.log("yosh!");
+    console.log(this.postponeBtnTarget);
   }
 
   markAsDone() {
     console.log("click! markAsDone");
   }
 
-  postpone() {
-    console.log("click! postpone");
+  postpone(event) {
+    // Toggle class sur le calendrier (event.currentTarget)
   }
 
   submit() {
