@@ -13,8 +13,9 @@
   </head>
 
   <body class="<%= params[:controller]%>-<%= params[:action]%>">
-    <% if  params[:action] != "home" %>
-
+    <% if params[:action] == "review" %>
+      <%= render 'shared/navbartoptwo' %>
+    <% elsif  params[:action] != "home" %>
       <%= render 'shared/navbartop' %>
       <%= render 'shared/flashes' %>
     <% end %>
@@ -22,7 +23,7 @@
     <%= yield %>
     <% if params[:action] == "profile" %>
       <%= render 'shared/navbartwo' %>
-    <% elsif params[:action] != "home" %>
+    <% elsif params[:action] != "home" && params[:action] != "review" %>
       <%= render 'shared/navbar' %>
     <% end %>
   </body>

@@ -1,4 +1,3 @@
-
 <%= render "hey" %>
 <%= render "estimated_time" %>
 
@@ -13,9 +12,13 @@
             class: "form-inline",
             data: { controller: 'check-task' }
           } do |f|  %>
-        <div class="task-box task-list">
-          <%= f.input :mark_as_done, as: :boolean, label: task.name, input_html: { 'data-action': 'change->check-task#submit'} %>
-        </div>
+          <%= link_to edit_task_path(task) do %>
+          <div class="task-box task-list d-flex">
+            <%= f.input :mark_as_done, as: :boolean, input_html: { 'data-action': 'change->check-task#submit'} %>
+            <%= task.name %>
+          </div>
+        <% end %>
+
         <%= f.submit "ok", class: "d-none", 'data-check-task-target': 'submitBtn' %>
       <% end %>
     <% end %>
@@ -27,9 +30,12 @@
             class: "form-inline",
             data: { controller: 'check-task' }
           } do |f|  %>
-        <div class="task-box task-list">
-          <%= f.input :mark_as_done, as: :boolean, label: task.name, input_html: { 'data-action': 'change->check-task#submit'} %>
-        </div>
+          <%= link_to edit_task_path(task) do %>
+            <div class="task-box task-list d-flex">
+              <%= f.input :mark_as_done, as: :boolean, label: task.name, input_html: { 'data-action': 'change->check-task#submit'} %>
+              <%= task.name %>
+            </div>
+        <% end %>
         <%= f.submit "ok", class: "d-none", 'data-check-task-target': 'submitBtn' %>
       <% end %>
     <% end %>
@@ -47,9 +53,12 @@
             class: "form-inline",
             data: { controller: 'check-task' }
           } do |f|  %>
-        <div class="task-box task-list">
-          <%= f.input :mark_as_done, as: :boolean, label: task.name, input_html: { 'data-action': 'change->check-task#submit'} %>
-        </div>
+          <%= link_to edit_task_path(task) do %>
+            <div class="task-box task-list d-flex">
+              <%= f.input :mark_as_done, as: :boolean, label: task.name, input_html: { 'data-action': 'change->check-task#submit'} %>
+              <%= task.name %>
+            </div>
+            <% end %>
         <%= f.submit "ok", class: "d-none", 'data-check-task-target': 'submitBtn' %>
       <% end %>
     <% end %>
@@ -61,11 +70,15 @@
             class: "form-inline",
             data: { controller: 'check-task' }
           } do |f|  %>
-        <div class="task-box task-list">
-          <%= f.input :mark_as_done, as: :boolean, label: task.name, input_html: { 'data-action': 'change->check-task#submit'} %>
-        </div>
+            <div class="task-box task-list">
+              <%= f.input :mark_as_done, as: :boolean, label: task.name, input_html: { 'data-action': 'change->check-task#submit'} %>
+            </div>
         <%= f.submit "ok", class: "d-none", 'data-check-task-target': 'submitBtn' %>
       <% end %>
     <% end %>
   </div>
 </ul>
+
+<script>
+document.querySelectorAll(".form-check-label.boolean.optional").forEach(element => element.innerHTML = "")
+</script>
