@@ -4,10 +4,8 @@ class NextdayController < ApplicationController
   end
 
   def reset
-    raise
-
     # TODO
-
+    puts "plop"
     redirect_to review_path
   end
 end
