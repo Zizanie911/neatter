@@ -1,13 +1,22 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static target = ["postponeBtn"]
+  static target = ["markAsDoneBtn, postponeBtn, submitBtn"]
 
-  connect(){
+  connect() {
     console.log("yosh!");
   }
 
-  postpone(){
-    console.log("click!");
+  markAsDone() {
+    console.log("click! markAsDone");
   }
+
+  postpone() {
+    console.log("click! postpone");
+  }
+
+  submit() {
+    console.log("click! submit");
+  }
+
 }
