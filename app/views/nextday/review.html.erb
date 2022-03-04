@@ -11,8 +11,8 @@
         <%= label_tag "mark_as_done_task_ids_#{task.id}", task.name %>
 
         <i class="fas fa-calendar" data-action="click->postpone-task#postpone" data-postpone-task-target="postponeBtn">
-          <%= check_box_tag 'postpone_task_ids[]', task.id, @postponed, id: "postpone_task_ids_#{task.id}", 'data-postpone-task-target': 'postponeBtn' %>
-          <%= label_tag "postpone_task_ids_#{task.id}", task.name %>
+          <%= check_box_tag 'postpone_task_ids[]', task.id, @postponed, id: "postpone_task_ids_#{task.id}", 'data-postpone-task-target': 'postponeBtn', class: "postpone-checkbox" %>
+          <%#= label_tag "postpone_task_ids_#{task.id}", task.name %>
         </i>
       </div>
     <% end %>
