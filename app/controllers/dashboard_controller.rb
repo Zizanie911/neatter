@@ -11,20 +11,39 @@ class DashboardController < ApplicationController
     @tasks = policy_scope(Task).past
     @tasks_week = policy_scope(Task).past.this_week.order(:start_at)
 
+
+    # taches totales tasks et habits par semaine
+    # @total_tasks_per_week = current_user.tasks.group_by_week(:start_at).count
+    # @done_tasks_per_week = current_user.tasks.where(mark_as_done: true).group_by_week(:start_at).count
+    # @opacity_week_coeff = @total_tasks_per_week.fdiv(@done_tasks_per_week)
+
+    # tout le monde : tâches et habits
     @total_tasks_per_day = current_user.tasks.group_by_day(:start_at).count
     @done_tasks_per_day = current_user.tasks.where(mark_as_done: true).group_by_day(:start_at).count
+
 
     @opacity_coeff = @total_tasks_per_day.map do |date, counter|
       [date, @done_tasks_per_day[date].to_i.fdiv(counter)]
     end.to_h
+
+    # les tâches seules
+    @total_tasks_only_per_day = current_user.tasks.where(days: nil).group_by_day(:start_at).count
+    @done_tasks_only_per_day = current_user.tasks.where(days: nil).where(mark_as_done: true).group_by_day(:start_at).count
+
+    @opacity_coeff_tasks = @total_tasks_only_per_day.map do |date, counter|
+      [date, @done_tasks_only_per_day[date].to_i.fdiv(counter)]
+    end.to_h
+
+    # les habits seules
+    @total_habits_only_per_day = current_user.tasks.where.not(days: nil).group_by_day(:start_at).count
+    @done_habits_only_per_day = current_user.tasks.where.not(days: nil).where(mark_as_done: true).group_by_day(:start_at).count
+
+    @opacity_coeff_habits = @total_habits_only_per_day.map do |date, counter|
+      [date, @done_habits_only_per_day[date].to_i.fdiv(counter)]
+    end.to_h
+
   end
 end
-
-
-
-
-
-
 
  # @monday = @tasks_week.map { |task| task if task.start_at.monday? }
     # @tuesday = @tasks_week.map { |task| task if task.start_at.tuesday? }
