@@ -38,6 +38,7 @@ class NextdayController < ApplicationController
     end
 
 
-    redirect_to review_path
+    # redirect_to review_path
+    redirect_to profile_path
   end
 end
