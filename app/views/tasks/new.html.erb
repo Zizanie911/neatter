@@ -3,8 +3,8 @@
   <%= simple_form_for(@task) do |f| %>
   <div data-controller="display-toggle">
   <div class="d-flex flex-row-reverse">
-  <i class="fas fa-clock h2" data-action="click->display-toggle#toggleClassOptions"></i>
-  <i class="far fa-calendar h2" data-action="click->display-toggle#toggleClassCalendarOptions"></i>
+  <i class="fas fa-clock h2 m-2" data-action="click->display-toggle#toggleClassOptions"></i>
+  <i class="far fa-calendar h2 m-2" data-action="click->display-toggle#toggleClassCalendarOptions"></i>
   </div>
     <%= f.input :name %>
       <%= f.input :details, wrapper_html: { data: {display_toggle_target: "dayElement" } } %>
