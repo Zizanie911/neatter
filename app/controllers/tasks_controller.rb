@@ -53,6 +53,11 @@ class TasksController < ApplicationController
 
   end
 
+# a corriger :
+  def tasks_of_the_day
+    current_user.tasks.where(start_at: Date.today)
+  end
+
   private
 
   def task_params
