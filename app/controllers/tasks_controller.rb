@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @tasks = policy_scope(Task)
+    @tasks = policy_scope(Task).today
     @user = current_user
     @username = @user.username
     @total = nb_total_tasks
