@@ -166,14 +166,13 @@ end
   task.save!
 end
 
-3.times do task = Task.new(
-  name: "Buy beers",
+task = Task.new(
+  name: "Buy Soda",
   details: "",
   priority: false,
   mark_as_done: false,
   days: [1, 3, 4],
   start_at: Date.today
-  )
-  task.user = user
-  task.save!
-end
+)
+task.user = user
+task.save!
