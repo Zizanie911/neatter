@@ -19,7 +19,6 @@
       <%= render 'shared/navbartop' %>
       <%= render 'shared/flashes' %>
     <% end %>
-
     <%= yield %>
     <% if params[:action] == "profile" || params[:action] == "new"  %>
       <%= render 'shared/navbartwo' %>

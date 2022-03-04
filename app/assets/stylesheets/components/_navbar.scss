@@ -10,20 +10,20 @@
 .text-nav {
   display: flex;
   justify-content: center;
-  color: #358aa7;
+  color: $blue;
   font-weight: bold;
 }
 
 .icon-color {
-  color: #358aa7;
   text-decoration: none;
+  color: $blue;
 }
 
 .nav-centrage {
   display: flex;
   justify-content: space-around;
   flex-grow: 0;
-  background-color: #85D7B3;
+  background-color: $light-gray;
   height: 70px;
   width: 100%;
   align-items: center;
