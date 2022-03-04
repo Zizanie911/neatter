@@ -1,5 +1,3 @@
-require 'Date'
-
 class DashboardController < ApplicationController
   def profile
     @user = current_user
@@ -7,7 +5,7 @@ class DashboardController < ApplicationController
     @days = [0, 1, 2, 3, 4, 5, 6]
     @hash_value_tasks = {}
     @day = Date.today.beginning_of_week
-
+    @week_days = (0...7).map { |i| Date.today.beginning_of_week + i.days }
     @tasks = policy_scope(Task).past
     @tasks_week = policy_scope(Task).past.this_week.order(:start_at)
 
@@ -33,6 +31,7 @@ class DashboardController < ApplicationController
     @opacity_coeff_tasks = @total_tasks_only_per_day.map do |date, counter|
       [date, @done_tasks_only_per_day[date].to_i.fdiv(counter)]
     end.to_h
+
 
     # les habits seules
     @total_habits_only_per_day = current_user.tasks.where.not(days: nil).group_by_day(:start_at).count
