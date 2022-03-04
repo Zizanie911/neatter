@@ -40,7 +40,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.update(task_params)
     authorize @task
-    redirect_to task_path(@task)
+    redirect_to tasks_path
   end
 
   def mark_as_done
