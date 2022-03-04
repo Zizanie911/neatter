@@ -8,6 +8,7 @@ class TasksController < ApplicationController
     @nb_tasks_not_done = Task.regular_tasks.not_done.count
     @estimated_time = estimated_time
     @regular_tasks = regular_tasks
+    # raise
   end
 
   def new
@@ -16,12 +17,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    if task_params[:start_at].present?
-      @task = Task.new(task_params)
-    else
-      task_params[:start_at] = Date.today
-      @task = Task.new(task_params)
-    end
+    @task = Task.new(task_params)
+    task_params[:start_at] = Date.today unless task_params[:start_at].present?
     @task.user = current_user
     authorize @task
     if @task.save
@@ -50,6 +47,10 @@ class TasksController < ApplicationController
     @task.save
 
     redirect_to tasks_path
+  end
+
+  def duplicate_to_next_day
+
   end
 
   private

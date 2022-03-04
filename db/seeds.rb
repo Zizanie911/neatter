@@ -33,6 +33,7 @@ task.save!
 task = Task.new(
   name: "Send email to Matthieu",
   details: "matthieu@gmail.com",
+  mark_as_done: true,
   priority: true
 )
 task.user = user
@@ -48,7 +49,8 @@ task.save!
 task = Task.new(
   name: "Buy beers",
   details: "",
-  priority: false
+  priority: false,
+  mark_as_done: true
 )
 task.user = user
 task.save!
