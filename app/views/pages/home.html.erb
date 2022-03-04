@@ -1,9 +1,16 @@
-<div class="container text-center home-container size-min-screen">
+<div class="container text-center home-container size-min-screen d-flex justify-content-center">
   <div class="">
-    <h1>Neatt</h1>
-    <h2>Free to plan your life day by day </h2>
+    <h1>Neatt.</h1>
+    <h2><span data-controller="typed-js"></span></h2>
+    <br>
+    <% if current_user %>
+    <h6> Hey there, <%= current_user.username %>! </h6>
     <%= link_to "Go to my tasks", tasks_path, class: "btn btn-ghost mt-5"%>
-    <%= link_to "Log in", new_user_session_path, class: "btn btn-ghost mt-5"%>
+    <% else %>
+    <%= link_to "Log in", new_user_session_path, class: "btn btn-ghost mt-5" %>
     <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-ghost mt-5" %>
+    </ul>
+    <% end %>
+
   </div>
 </div>
