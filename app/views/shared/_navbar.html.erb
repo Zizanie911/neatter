@@ -1,7 +1,12 @@
 <div class="nav-centrage fixed-bottom">
   <div>
     <%= link_to profile_path do %>
-      <i class="fas fa-chart-area bloc-icon icon-color"></i>
+      <%# <i class="fas fa-chart-area bloc-icon icon-color"></i> %>
+<script src="https://cdn.lordicon.com/lusqsztk.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/osqwjgzg.json"
+    style="width:40px;height:40px">
+</lord-icon>
     <% end %>
   </div>
   <div class="add-button-navbar">
@@ -10,6 +15,8 @@
     <% end %>
   </div>
   <div>
-    <%= link_to "Next day", review_path, class: "text-nav"%>
+    <%= link_to review_path, class: "text-nav" do %>
+    <i class="fas fa-angle-double-right"></i>
+    <% end %>
   </div>
 </div>
