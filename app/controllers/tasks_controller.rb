@@ -88,7 +88,7 @@ class TasksController < ApplicationController
 
   def estimated_time
     t = 0
-    @tasks.not_done.each do |task|
+    @tasks.not_done.today.each do |task|
       t += task.duration unless task.duration.nil?
     end
     return "00:00" if t.zero?
