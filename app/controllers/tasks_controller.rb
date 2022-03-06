@@ -4,8 +4,8 @@ class TasksController < ApplicationController
     @user = current_user
     @username = @user.username
     @total = nb_total_tasks
-    @nb_habits_not_done = Task.habits.not_done.count
-    @nb_tasks_not_done = Task.regular_tasks.not_done.count
+    @nb_habits_not_done = Task.habits.not_done.today.count
+    @nb_tasks_not_done = Task.regular_tasks.not_done.today.count
     @estimated_time = estimated_time
     @regular_tasks = regular_tasks
     # raise
