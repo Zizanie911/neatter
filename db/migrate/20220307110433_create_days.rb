@@ -1,7 +1,8 @@
 class CreateDays < ActiveRecord::Migration[6.1]
   def change
     create_table :days do |t|
-      t.datetime :today, null: false, default: Date.today
+      t.references :user, null: false, foreign_key: true
+      t.datetime :today, null: false
       t.boolean :passed, default: false
 
       t.timestamps

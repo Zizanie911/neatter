@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :tasks, dependent: :destroy
-  belongs_to :day, dependent: :destroy
+  has_many :day, dependent: :destroy
 
   validates :username, presence: true
 end
