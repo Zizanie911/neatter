@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_day
+  before_action :set_day, if: :user_signed_in?
   include Pundit
 
   # Pundit: white-list approach.
