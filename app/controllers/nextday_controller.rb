@@ -21,11 +21,8 @@ class NextdayController < ApplicationController
     # 2/ Itérer sur les postpone_task_ids de params et les cloner avec comme start_date le lendemain
     unless params[:postpone_task_ids].nil?
       @tasks = Task.today.find(params[:postpone_task_ids])
-      puts "@tasks = #{@tasks}"
       @tasks.each do |task|
-        #task.duplicate_to_next_day :          #(task)
-        # copy = task.clone
-        # copy.user = current_user
+        # task.duplicate_to_next_day :
         copy = Task.new(
           name: task.name,
           details: task.details,
@@ -37,8 +34,13 @@ class NextdayController < ApplicationController
       end
     end
 
+    # Next day : check ! Now index page displays the day after
 
-    # redirect_to review_path
+    @user = current_user
+    @day = @user.days.where(today: Date.today).first_or_initialize
+    @day.passed = true
+    @day.save!
+
     redirect_to profile_path
   end
 end
