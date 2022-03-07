@@ -1,7 +1,8 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: $light-gray;
-  height: 70px;
+  background: $gray;
+  height: 50px;
+  margin-bottom: 7px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -11,12 +12,6 @@
 .text-nav-top {
   display: flex;
   justify-content: center;
-  color: $blue;
+  color: $light-gray;
   font-weight: bold;
-}
-
-.size-icon {
-  height: 20px;
-  width: 20px;
-  text-decoration: none;
 }
