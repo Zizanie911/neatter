@@ -30,10 +30,16 @@
 }
 
 .flex-dashboard {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
   margin-top: 15px;
   padding: 5px;
+}
+
+
+.grid-dash {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
 
 .item-dashboard {
