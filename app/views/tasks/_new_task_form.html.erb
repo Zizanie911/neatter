@@ -18,6 +18,7 @@
                   wrapper_html: { class: "d-none", data: {controller: "task-calendar", display_toggle_target: "calendarOptionElement"}  },
                   input_html: { data: {task_calendar_target:"date", action:"click->task-calendar#showCalendar"} }
       %>
+      <%= f.input :tag_list %>
       <%= f.input :duration, placeholder: "minutes",
                   input_html: { min: '0', step: '15'},
                   wrapper_html: { class: "d-none", data: {display_toggle_target: "optionElement"} }
