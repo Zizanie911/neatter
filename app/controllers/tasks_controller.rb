@@ -22,24 +22,51 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    task_params[:start_at] = Date.today unless task_params[:start_at].present?
-    @task.user = current_user
-    authorize @task
-    if @task.save
-      redirect_to tasks_path
+
+    if task_params[:days].present?
+      first_day = task_params[:days].first.to_i
+      @task.start_at = Date.today.beginning_of_week + ((first_day > 0 ? first_day : 7) - 1).days
+      @task.user = current_user
+      authorize @task
+      if @task.valid?
+        task_params[:days].map(&:to_i).each do |i|
+          task = Task.new(task_params)
+          task.start_at = Date.today.beginning_of_week + ((i > 0 ? i : 7) - 1).days
+          task.user = current_user
+          task.save
+        end
+        redirect_to tasks_path
+      else
+        render :new
+      end
+
     else
-      render :new
+      @task.start_at = Date.today unless task_params[:start_at].present?
+      @task.user = current_user
+      authorize @task
+      if @task.save
+        redirect_to tasks_path
+      else
+        render :new
+      end
     end
   end
 
   def edit
     @task = Task.find(params[:id])
-    authorize @task
+    authorize @tasks
   end
 
   def update
     @task = Task.find(params[:id])
     @task.update(task_params)
+    authorize @task
+    redirect_to tasks_path
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
     authorize @task
     redirect_to tasks_path
   end

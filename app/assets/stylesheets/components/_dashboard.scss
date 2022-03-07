@@ -19,6 +19,7 @@
   border-radius: 4px;
   margin-top: 15px;
   padding: 5px;
+
 }
 .dashboard-h4 {
   text-align: center;
@@ -37,6 +38,10 @@
   justify-content: center;
   margin-top: 15px;
   padding: 5px;
+}
+
+.grid-dash {
+  flex-wrap: wrap;
 }
 
 .item-dashboard {
