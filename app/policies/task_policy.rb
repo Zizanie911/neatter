@@ -12,8 +12,13 @@ class TaskPolicy < ApplicationPolicy
     return true
   end
 
+  def edit?
+    record.user == user
+  end
+
   def update?
     record.user == user
+    return true
     # - record: the restaurant passed to the `authorize` method in controller
     # - user:   the `current_user` signed in with Devise.
   end
@@ -26,7 +31,11 @@ class TaskPolicy < ApplicationPolicy
     record.user == user
   end
 
+
   def prioritize?
     record.user == user
+
+  def edit
+    update?
   end
 end
