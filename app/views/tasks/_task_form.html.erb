@@ -15,6 +15,7 @@
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
+      <svg class="<%= "active" if task.priority %>" width="24" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m14.986 8.974-2.532-5.49a.5.5 0 0 0-.908 0l-2.533 5.49a.5.5 0 0 1-.395.287l-6.003.712a.5.5 0 0 0-.281.864l4.439 4.105a.5.5 0 0 1 .15.464l-1.178 5.93a.5.5 0 0 0 .735.534l5.275-2.953a.5.5 0 0 1 .489 0l5.276 2.953a.5.5 0 0 0 .734-.534l-1.178-5.93a.5.5 0 0 1 .15-.464l4.44-4.105a.5.5 0 0 0-.281-.864l-6.004-.712a.5.5 0 0 1-.395-.287Z" stroke="#DADADA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
   <%= f.submit "ok", class: "d-none", 'data-check-task-target': 'submitBtn' %>
 <% end %>
