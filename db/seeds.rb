@@ -19,12 +19,11 @@ user = User.new(
 )
 user.save!
 
-day = Day.new(
-  today: Date.today,
-  passed: false
+session = Session.new(
+  today: Date.today
 )
-day.user = user
-day.save!
+session.user = user
+session.save!
 
 task = Task.new(
   name: "Yoga",

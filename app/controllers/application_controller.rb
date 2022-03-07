@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_day, if: :user_signed_in?
   include Pundit
 
   # Pundit: white-list approach.
@@ -26,5 +27,9 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)|(^dashboard$)|(^nextday$)/
+  end
+
+  def set_day
+    @session = current_user.sessions.where(today: Date.today).first_or_create
   end
 end
