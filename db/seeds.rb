@@ -19,6 +19,13 @@ user = User.new(
 )
 user.save!
 
+day = Day.new(
+  today: Date.today,
+  passed: false
+)
+day.user = user
+day.save!
+
 task = Task.new(
   name: "Yoga",
   details: "don't forget your mat!",
