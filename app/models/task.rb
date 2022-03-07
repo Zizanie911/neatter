@@ -9,12 +9,13 @@ class Task < ApplicationRecord
   scope :this_week, -> { where("start_at > ?", Time.now.beginning_of_week) }
   scope :today, -> { where("start_at >= ?", Time.now.beginning_of_day).where("start_at <= ?", Time.now.end_of_day) }
 
-
   belongs_to :user
 
   validates :name, presence: true
 
   before_create :set_default_start_at
+
+  acts_as_taggable_on :tags
 
   def set_default_start_at
     return if start_at.present?
