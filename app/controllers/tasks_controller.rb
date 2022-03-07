@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
   def index
     @user = current_user
-    @day = @user.days.where(today: Date.today).first_or_create
-    if @day.passed?
+    @session = @user.sessions.where(today: Date.today).first_or_create
+    if @session.passed?
       @tasks = policy_scope(Task).tomorrow
     else
       @tasks = policy_scope(Task).today

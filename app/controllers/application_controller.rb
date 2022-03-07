@@ -30,6 +30,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_day
-    @day = current_user.days.where(today: Date.today).first_or_create
+    @session = current_user.sessions.where(today: Date.today).first_or_create
   end
 end
