@@ -9,11 +9,15 @@ class DashboardController < ApplicationController
     @tasks = policy_scope(Task).past
     @tasks_week = policy_scope(Task).past.this_week.order(:start_at)
 
+    def day_number(object)
+      object.strftime("%d")
+    end
 
-    # taches totales tasks et habits par semaine
-    # @total_tasks_per_week = current_user.tasks.group_by_week(:start_at).count
-    # @done_tasks_per_week = current_user.tasks.where(mark_as_done: true).group_by_week(:start_at).count
-    # @opacity_week_coeff = @total_tasks_per_week.fdiv(@done_tasks_per_week)
+    # Variable pour calculer les taches totales tasks et habits par mois
+    start_date = day_number(Date.today.at_beginning_of_month).to_i
+    end_date = day_number(Date.today.at_beginning_of_month.next_month - 1.days).to_i
+
+    @month_days = (start_date..end_date)
 
     # tout le monde : tâches et habits
     @total_tasks_per_day = current_user.tasks.group_by_day(:start_at).count
@@ -31,7 +35,6 @@ class DashboardController < ApplicationController
     @opacity_coeff_tasks = @total_tasks_only_per_day.map do |date, counter|
       [date, @done_tasks_only_per_day[date].to_i.fdiv(counter)]
     end.to_h
-
 
     # les habits seules
     @total_habits_only_per_day = current_user.tasks.where.not(days: nil).group_by_day(:start_at).count
@@ -73,8 +76,6 @@ end
 
 # @number_tasks_day = @tasks_per_day.count
     # @tasks_done_per_day = @tasks_per_day.where(mark_as_done: true)
-
-    #raise
 
 
 

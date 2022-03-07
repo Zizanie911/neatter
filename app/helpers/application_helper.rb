@@ -6,4 +6,8 @@ module ApplicationHelper
   def day_time(object)
     object.strftime("%a")
   end
+
+  def day_number(object)
+    object.strftime("%d")
+  end
 end
