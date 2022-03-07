@@ -5,10 +5,10 @@
   <i class="far fa-calendar h2 m-2" data-action="click->display-toggle#toggleClassCalendarOptions"></i>
   </div>
     <%= f.input :name %>
-      <%= f.input :details, wrapper_html: { data: {display_toggle_target: "dayElement" } } %>
       <%= f.input :days, wrapper_html: { class: "d-none", data: {display_toggle_target: "dayElement" } },
                   collection: Date::DAYNAMES.map { |day_name| [day_name, Date::DAYNAMES.index(day_name)] },
                   as: :check_boxes,
+                  label: "",
                   include_hidden: false,
                   input_html: { class: "tag-selector" },
                   item_wrapper_class: "tag-item"
