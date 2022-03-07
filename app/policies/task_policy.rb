@@ -31,11 +31,7 @@ class TaskPolicy < ApplicationPolicy
     record.user == user
   end
 
-
   def prioritize?
     record.user == user
-
-  def edit
-    update?
   end
 end
