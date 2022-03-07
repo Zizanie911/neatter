@@ -37,9 +37,9 @@ class NextdayController < ApplicationController
     # Next day : check ! Now index page displays the day after
 
     @user = current_user
-    @day = @user.days.where(today: Date.today).first_or_initialize
-    @day.passed = true
-    @day.save!
+    @session = @user.sessions.where(today: Date.today).first_or_initialize
+    @session.passed = true
+    @session.save!
 
     redirect_to profile_path
   end

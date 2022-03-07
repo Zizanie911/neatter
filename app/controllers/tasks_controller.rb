@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
   def index
     @user = current_user
-    @day = @user.days.where(today: Date.today).first_or_create
-    if @day.passed?
+    @session = @user.sessions.where(today: Date.today).first_or_create
+    if @session.passed?
       @tasks = policy_scope(Task).tomorrow
     else
       @tasks = policy_scope(Task).today
@@ -80,6 +80,15 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+
+  def tagged
+    if params[:tag].present?
+      @tasks_tags = policy_scope(Task).tagged_with(params[:tag])
+    else
+      @tasks_tags = policy_scope(Task).all
+    end
+  end
+
   def prioritize
     @task = Task.find(params[:id])
     authorize @task
@@ -92,7 +101,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :details, :priority, :start_at, :duration, days:[])
+    params.require(:task).permit(:name, :details, :priority, :start_at, :tag_list, :duration, days:[])
   end
 
   def regular_tasks
