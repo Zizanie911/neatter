@@ -15,14 +15,8 @@
     <% end %>
   </div>
   <div>
-    <%if request.referrer == "http://localhost:3000/review"%>
-      <%= link_to "#{tasks_path}", class: "text-nav" do %>
-        <i class="fas fa-angle-double-right"></i>
-      <% end %>
-    <%else%>
-      <%= link_to review_path, class: "text-nav" do %>
-        <i class="fas fa-angle-double-right"></i>
-      <% end %>
-    <%end%>
+    <%= link_to review_path, class: "text-nav" do %>
+      <i class="fas fa-angle-double-right"></i>
+    <% end %>
   </div>
 </div>
