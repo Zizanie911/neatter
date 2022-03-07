@@ -54,7 +54,7 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
-    authorize @tasks
+    authorize @task
   end
 
   def update
@@ -75,6 +75,15 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     authorize @task
     @task.mark_as_done = !@task.mark_as_done
+    @task.save
+
+    redirect_to tasks_path
+  end
+
+  def prioritize
+    @task = Task.find(params[:id])
+    authorize @task
+    @task.priority = !@task.priority
     @task.save
 
     redirect_to tasks_path

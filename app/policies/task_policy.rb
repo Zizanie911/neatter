@@ -25,4 +25,8 @@ class TaskPolicy < ApplicationPolicy
   def mark_as_done?
     record.user == user
   end
+
+  def prioritize?
+    record.user == user
+  end
 end
