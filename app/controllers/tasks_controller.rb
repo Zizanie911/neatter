@@ -8,7 +8,6 @@ class TasksController < ApplicationController
     @nb_tasks_not_done = @tasks.regular_tasks.not_done.count
     @estimated_time = estimated_time
     @regular_tasks = regular_tasks
-    # raise
   end
 
   def new
@@ -47,17 +46,6 @@ class TasksController < ApplicationController
     @task.save
 
     redirect_to tasks_path
-  end
-
-  # def duplicate_to_next_day
-  #   copie = task.clone
-  #   copie.user = current_user
-  #   copie.save
-  # end
-
-# a corriger :
-  def tasks_of_the_day
-    current_user.tasks.where(start_at: Date.today)
   end
 
   private

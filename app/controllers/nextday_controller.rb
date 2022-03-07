@@ -37,8 +37,11 @@ class NextdayController < ApplicationController
       end
     end
 
-
     # redirect_to review_path
-    redirect_to profile_path
+    if params[:query].nil?
+      redirect_to "#{profile_path}"
+    else
+      redirect_to "#{home_path}"
+    end
   end
 end
