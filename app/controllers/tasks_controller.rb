@@ -40,6 +40,13 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    authorize @task
+    redirect_to tasks_path
+  end
+
   def mark_as_done
     @task = Task.find(params[:id])
     authorize @task
