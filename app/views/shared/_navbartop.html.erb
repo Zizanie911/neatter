@@ -23,7 +23,11 @@
   </div>
 
   <div class="text-nav-top">
-    <%= better_time(Date.today) %>
+    <%# <%if @day.passed?%>
+      <%=better_time(Date.tomorrow) %>
+    <%# <%else%>
+      <%# <%=better_time(Date.today) %>
+    <%# <%end%>
   </div>
 
   <div>

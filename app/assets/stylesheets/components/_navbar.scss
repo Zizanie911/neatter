@@ -24,7 +24,7 @@
   display: flex;
   justify-content: space-around;
   flex-grow: 0;
-  background-color: $light-gray;
+  background-color: $midnight;
   height: 70px;
   width: 100%;
   align-items: center;
@@ -42,4 +42,13 @@
 .add-button-navbar {
   position: absolute;
   top: -27px;
+}
+
+.task-form-container {
+  position: absolute;
+  bottom: 100px;
+  width: 300px;
+  left: -118px;
+  backdrop-filter: blur(5px);
+
 }

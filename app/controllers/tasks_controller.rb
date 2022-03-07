@@ -1,7 +1,12 @@
 class TasksController < ApplicationController
   def index
-    @tasks = policy_scope(Task).today
     @user = current_user
+    @day = @user.days.where(today: Date.today).first_or_create
+    if @day.passed?
+      @tasks = policy_scope(Task).tomorrow
+    else
+      @tasks = policy_scope(Task).today
+    end
     @username = @user.username
     @total = nb_total_tasks
     @nb_habits_not_done = @tasks.habits.not_done.count
@@ -49,7 +54,7 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
-    authorize @tasks
+    authorize @task
   end
 
   def update
@@ -73,17 +78,6 @@ class TasksController < ApplicationController
     @task.save
 
     redirect_to tasks_path
-  end
-
-  # def duplicate_to_next_day
-  #   copie = task.clone
-  #   copie.user = current_user
-  #   copie.save
-  # end
-
-# a corriger :
-  def tasks_of_the_day
-    current_user.tasks.where(start_at: Date.today)
   end
 
   private

@@ -10,10 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2022_03_07_151351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
 
   create_table "taggings", force: :cascade do |t|
     t.bigint "tag_id"
@@ -45,6 +47,15 @@ ActiveRecord::Schema.define(version: 2022_03_07_151351) do
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
+  
+  create_table "days", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.date "today", null: false
+    t.boolean "passed", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_days_on_user_id"
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -73,6 +84,10 @@ ActiveRecord::Schema.define(version: 2022_03_07_151351) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
   add_foreign_key "taggings", "tags"
+
+  add_foreign_key "days", "users"
+
   add_foreign_key "tasks", "users"
 end

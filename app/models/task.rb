@@ -8,6 +8,7 @@ class Task < ApplicationRecord
   scope :past, -> { where("start_at < ?", Time.current) }
   scope :this_week, -> { where("start_at > ?", Time.now.beginning_of_week) }
   scope :today, -> { where("start_at >= ?", Time.now.beginning_of_day).where("start_at <= ?", Time.now.end_of_day) }
+  scope :tomorrow, -> { where("start_at >= ?", Time.now.beginning_of_day + 1.day).where("start_at <= ?", Time.now.end_of_day + 1.day) }
 
   belongs_to :user
 
