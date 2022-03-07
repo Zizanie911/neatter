@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2022_03_07_110433) do
 
   create_table "days", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.datetime "today", null: false
+    t.date "today", null: false
     t.boolean "passed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
