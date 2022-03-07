@@ -80,6 +80,15 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def prioritize
+    @task = Task.find(params[:id])
+    authorize @task
+    @task.priority = !@task.priority
+    @task.save
+
+    redirect_to tasks_path
+  end
+
   private
 
   def task_params
