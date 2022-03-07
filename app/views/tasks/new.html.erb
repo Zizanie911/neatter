@@ -1,32 +1,5 @@
 <div class="container">
   <h1>New Task</h1>
-  <%= simple_form_for(@task) do |f| %>
-  <div data-controller="display-toggle">
-  <div class="d-flex flex-row-reverse">
-  <i class="fas fa-clock h2 m-2" data-action="click->display-toggle#toggleClassOptions"></i>
-  <i class="far fa-calendar h2 m-2" data-action="click->display-toggle#toggleClassCalendarOptions"></i>
-  </div>
-    <%= f.input :name %>
-      <%= f.input :details, wrapper_html: { data: {display_toggle_target: "dayElement" } } %>
-      <%= f.input :days, wrapper_html: { class: "d-none", data: {display_toggle_target: "dayElement" } },
-                  collection: Date::DAYNAMES.map { |day_name| [day_name, Date::DAYNAMES.index(day_name)] },
-                  as: :check_boxes,
-                  include_hidden: false,
-                  input_html: { class: "tag-selector" },
-                  item_wrapper_class: "tag-item"
-      %>
-      <%= f.input :start_at, as: :string,
-                  required: false,
-                  wrapper_html: { class: "d-none", data: {controller: "task-calendar", display_toggle_target: "calendarOptionElement"}  },
-                  input_html: { data: {task_calendar_target:"date", action:"click->task-calendar#showCalendar"} }
-      %>
-      <%= f.input :duration, placeholder: "minutes",
-                  input_html: { min: '0', step: '15'},
-                  wrapper_html: { class: "d-none", data: {display_toggle_target: "optionElement"} }
-      %>
-      <%= f.input :habit, as: :boolean, input_html: { data: { action:"click->display-toggle#toggleClassForHabits" }, class: "toggle" }  %>
-    </div>
-    <%= f.input :priority, label: "High Priority", input_html: { class: "toggle" } %>
-    <%= f.submit class: "btn-ghost" %>
-  <% end %>
+  <%= render "new_task_form", task: @task %>
+
 </div>
