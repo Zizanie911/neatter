@@ -80,10 +80,28 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+
+  def tagged
+    if params[:tag].present?
+      @tasks_tags = policy_scope(Task).tagged_with(params[:tag])
+    else
+      @tasks_tags = policy_scope(Task).all
+    end
+  end
+
+  def prioritize
+    @task = Task.find(params[:id])
+    authorize @task
+    @task.priority = !@task.priority
+    @task.save
+
+    redirect_to tasks_path
+  end
+
   private
 
   def task_params
-    params.require(:task).permit(:name, :details, :priority, :start_at, :duration, days:[])
+    params.require(:task).permit(:name, :details, :priority, :start_at, :tag_list, :duration, days:[])
   end
 
   def regular_tasks

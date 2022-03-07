@@ -20,6 +20,11 @@
     </div>
     <%= f.input :priority, input_html: { class: "toggle" } %>
     <%= f.submit class: "btn-ghost" %>
+      <div class="add-btn-task">
+        <%= link_to task_path(@task), method: :delete, class: "btn-delete" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
   <% end %>
 
 <hr>
