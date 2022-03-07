@@ -8,7 +8,6 @@ class TasksController < ApplicationController
     @nb_tasks_not_done = Task.regular_tasks.not_done.today.count
     @estimated_time = estimated_time
     @regular_tasks = regular_tasks
-    # raise
   end
 
   def new
@@ -55,10 +54,6 @@ class TasksController < ApplicationController
   #   copie.save
   # end
 
-# a corriger :
-  def tasks_of_the_day
-    current_user.tasks.where(start_at: Date.today)
-  end
 
   private
 
