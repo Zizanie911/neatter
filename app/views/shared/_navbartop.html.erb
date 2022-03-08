@@ -1,11 +1,10 @@
 <div class="container">
   <div class="navbar-position navbar-expand-sm navbar-light ">
       <div class="nav-item dropdown">
-
-        <a class="" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Hello <%= @username %>
+        <a class="username-nav" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">  <%= @username %>
            <svg height="32" viewBox="0 0 21 21" width="32" xmlns="http://www.w3.org/2000/svg"><path d="m6.5 7.5h4l-6 9v-6.997l-4-.003 6-9z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(5 2)"/></svg>
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown item-navbar">
+        <div class="dropdown-menu dropdown-menu-pad" aria-labelledby="navbarDropdown item-navbar">
           <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "Home", tasks_path, class: "nav-link item-navbar" %>
