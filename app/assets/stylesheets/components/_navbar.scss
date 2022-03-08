@@ -7,14 +7,6 @@
   align-items: center;
 }
 
-.text-nav {
-  display: flex;
-  justify-content: center;
-  color: $gray;
-  font-weight: bold;
-  font-size: 40px;
-}
-
 .icon-color {
   text-decoration: none;
   color: $blue;
@@ -41,18 +33,26 @@
 
 .add-button-navbar {
   position: absolute;
-  top: -27px;
+  top: -10px;
+  width: 100%;
 }
 
 .task-form-container {
   position: absolute;
-  bottom: 83px;
+  bottom: -100vh;
   width: 100%;
+  min-height: auto;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   background-color: #2A2C36;
-  padding: 15px;
-  border-radius: 4px;
-
+  padding: 15px 15px 0 15px;
+  border-radius: 8px;
+  z-index: -1;
+  transition: all 500ms ease;
+  border-bottom: solid 100px #2A2C36;
+  &.form-visible {
+    bottom: -20px;
+  }
 }
 
 .color-yellow {

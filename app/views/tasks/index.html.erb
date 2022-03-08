@@ -1,14 +1,26 @@
 <div class="container" style="padding-bottom: 100px">
-  <div>
-    <%= link_to profile_path do %>
-      <svg height="32" viewBox="0 0 21 21" width="32" xmlns="http://www.w3.org/2000/svg"><path d="m6.5 7.5h4l-6 9v-6.997l-4-.003 6-9z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(5 2)"/></svg>
-    <% end %>
+  <div class="d-flex justify-content-between">
+    <div class="text-calendar">
+      <%if user_signed_in? %>
+        <%if @session.passed?%>
+          <%=better_time(Date.tomorrow) %>
+        <%else%>
+          <%=better_time(Date.today) %>
+        <%end%>
+      <%else%>
+        <%=better_time(Date.today)%>
+      <%end%>
+    </div>
+    <div>
+      <%= link_to review_path, class: "text-nav" do %>
+        <svg height="30" viewBox="0 0 21 21" width="30" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" transform="translate(2 2)"><path d="m2.5.5h12.0269119c1.1045695 0 2 .8954305 2 2v11.9907459c0 1.0543618-.8158778 1.9181651-1.8507376 1.9945143l-.1588615.0054627-12.02691193-.0577246c-1.10080997-.0052835-1.99040087-.8991544-1.99040087-1.999977v-11.9330213c0-1.1045695.8954305-2 2-2z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="m.5 4.5h16.027" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12.5" cy="12.5" fill="currentColor" r="1"/></g></svg>
+      <% end %>
+    </div>
   </div>
   <%= render "hey" %>
   <%= render "estimated_time" %>
 
-  <h6 class="index">Top Priority</h6>
-
+  <h6 class="index">High Priority</h6>
   <ul style="padding-left: 0;">
     <div class="list-container">
       <% @tasks.where(priority: true).order(:mark_as_done).each do |task| %>
