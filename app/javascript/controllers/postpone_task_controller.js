@@ -17,9 +17,8 @@ export default class extends Controller {
   }
 
   toggleCalendar() {
-    console.log("toggle!");
+    // console.log("toggle!");
     this.calendarTarget.classList.toggle("d-none");
-
   }
 
   submit() {
