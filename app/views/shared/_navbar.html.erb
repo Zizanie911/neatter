@@ -1,8 +1,11 @@
 <div class="nav-centrage fixed-bottom">
-  <div class="add-button-navbar" data-controller="task-form">
-    <div class="btn add-button" data-action="click->task-form#toggleForm"><i class="fas fa-plus "></i></div>
-      <div class="task-form-container" data-task-form-target="formContainer">
-        <%= render "new_task_form", task: Task.new %>
-      </div>
+  <div class="add-button-navbar">
+    <div class="btn add-button" data-task-form-target="button" data-path=<%= new_task_path %>  data-action="click->task-form#toggleForm">
+      <i class="fas fa-plus "></i>
+    </div>
+    <div class="task-form-container" data-task-form-target="formContainer"></div>
   </div>
 </div>
+
+
+<%#= render "new_task_form", task: Task.new %>

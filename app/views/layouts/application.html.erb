@@ -17,7 +17,7 @@
     <%= render 'shared/ios_pwa_links' %>
   </head>
 
-  <body class="<%= params[:controller]%>-<%= params[:action]%>">
+  <body class="<%= params[:controller]%>-<%= params[:action]%>" data-controller="task-form">
     <% if params[:action] == "review" %>
       <%#= render 'shared/navbartoptwo' %>
     <% elsif  params[:action] != "home" %>
