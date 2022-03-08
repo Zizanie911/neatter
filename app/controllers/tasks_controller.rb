@@ -82,8 +82,8 @@ class TasksController < ApplicationController
 
 
   def tagged
-    if params[:tag].present?
-      @tasks_tags = policy_scope(Task).tagged_with(params[:tag])
+    if params[:tags].present?
+      @tasks_tags = policy_scope(Task).tagged_with(params[:tags])
     else
       @tasks_tags = policy_scope(Task).all
     end
