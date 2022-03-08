@@ -7,13 +7,8 @@
       <h6> Hey there, <%= current_user.username %>! </h6>
       <%= link_to "See my day", tasks_path, class: "btn btn-ghost mt-5"%>
     <% else %>
-<<<<<<< HEAD
-    <%= link_to "Log in", new_session_path, class: "btn btn-ghost mt-5" %>
-    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-ghost mt-5" %>
-=======
-      <%= link_to "Log in", new_ession_path, class: "btn btn-ghost mt-5" %>
+      <%= link_to "Log in", new_session_path, class: "btn btn-ghost mt-5" %>
       <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-ghost mt-5" %>
->>>>>>> 266732f1f9897d425901d747716c4bfa9dc30b13
     </ul>
     <% end %>
   </div>
