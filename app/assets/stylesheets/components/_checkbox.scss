@@ -75,4 +75,16 @@
 .postpone-checkbox {
   position: relative !important;
   left: 0 !important;
+  display: none;
+}
+
+.postpone-checkbox[type="checkbox"]:not(:checked) + label:before,
+.postpone-checkbox[type="checkbox"]:checked + label:before,
+.postpone-checkbox[type="checkbox"]:not(:checked) + label:after,
+.postpone-checkbox[type="checkbox"]:checked + label:after {
+  content: none;
+}
+
+.postpone-checkbox:checked + label {
+  color: red
 }
