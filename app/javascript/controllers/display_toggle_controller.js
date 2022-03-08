@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["dayElement", "optionElement", "calendarOptionElement"]
+  static targets = ["dayElement", "optionElement", "calendarOptionElement", "priorityElement", "priorityStar"]
 
   connect() {
   }
@@ -18,6 +18,13 @@ export default class extends Controller {
   toggleClassCalendarOptions() {
     console.log("click!")
     this.calendarOptionElementTarget.classList.toggle("d-none");
+  }
+
+  toggleClassPriority() {
+    this.priorityStarTarget.classList.toggle("fas");
+    this.priorityStarTarget.classList.toggle("far");
+    this.priorityStarTarget.classList.toggle("color-yellow");
+    this.priorityElementTarget.checked = !this.priorityElementTarget.checked;
   }
 
 }
