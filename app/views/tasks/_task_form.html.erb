@@ -15,7 +15,7 @@
               <%= truncate(task.name, length: 25) %>
             <% end %>
           </div>
-          <div class="edit-task-form-container d-none" data-edit-task-form-target="formContainer">
+          <div class="task-form-container edit-task-form-container d-none" data-edit-task-form-target="formContainer">
             <%= render "edit_task_form", task: task %>
           </div>
           <div>
