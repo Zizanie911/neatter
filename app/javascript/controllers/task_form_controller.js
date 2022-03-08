@@ -8,10 +8,9 @@ export default class extends Controller {
     // console.log(this.formContainerTarget);
   }
 
-  toggleForm(e) {
-    e.preventDefault();
+  toggleForm() {
     console.log("toggle");
-    this.formContainerTarget.classList.toggle("d-none")
+    this.formContainerTarget.classList.toggle("form-visible");
   }
 
 }

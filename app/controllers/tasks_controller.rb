@@ -29,7 +29,6 @@ class TasksController < ApplicationController
       @task.tag_list.add(tags_add)
       @task.save
     end
-
     if task_params[:days].present?
       first_day = task_params[:days].first.to_i
       @task.start_at = Date.today.beginning_of_week + ((first_day > 0 ? first_day : 7) - 1).days
@@ -99,7 +98,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :details, :priority, :start_at, :duration, tag_list:[], days:[])
+    params.require(:task).permit(:name, :details, :priority, :start_at, :duration, :habit, tag_list:[], days:[])
   end
 
   def regular_tasks

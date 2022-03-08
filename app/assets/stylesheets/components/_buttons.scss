@@ -1,8 +1,9 @@
 .btn-ghost {
-  color: $blue;
-  border: 1px solid $blue;
+  color: $white;
+  background-color: $light-black;
+  border: 1px solid $white;
   padding: 8px 24px;
-  border-radius: 5px;
+  border-radius: 4px;
   opacity: 0.7;
   transition: opacity 0.3s ease;
 }
@@ -21,11 +22,6 @@
   justify-content: center;
   font-size: 30px;
   color: $white;
-}
-
-.add-btn-task {
-  color: black;
-}
-
-.btn-delete {
+  z-index: 0;
+  margin: 0 auto;
 }

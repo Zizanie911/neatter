@@ -1,7 +1,5 @@
-  <div data-controller="display-toggle">
+<div data-controller="display-toggle">
   <%= simple_form_for(task) do |f| %>
-  <div class="d-flex flex-row-reverse">
-  </div>
     <%= f.input :name %>
       <%= f.input :days, wrapper_html: { class: "d-none", data: {display_toggle_target: "dayElement" } },
                   collection: Date::DAYNAMES.map { |day_name| [day_name, Date::DAYNAMES.index(day_name)] },
@@ -34,3 +32,4 @@
     <%= f.submit class: "btn-ghost" %>
   </div>
   <% end %>
+</div>
