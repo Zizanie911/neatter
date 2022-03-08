@@ -19,10 +19,10 @@
 
   <body class="<%= params[:controller]%>-<%= params[:action]%>">
     <% if params[:action] == "review" %>
-      <%= render 'shared/navbartoptwo' %>
+      <%#= render 'shared/navbartoptwo' %>
     <% elsif  params[:action] != "home" %>
       <%= render 'shared/navbartop' %>
-      <%= render 'shared/flashes' %>
+      <%#= render 'shared/flashes' %>
     <% end %>
     <%= yield %>
     <% if params[:action] == "profile" || params[:action] == "new"  %>
