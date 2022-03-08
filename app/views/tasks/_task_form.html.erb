@@ -13,6 +13,8 @@
         <%= truncate(task.name, length: 25) %>
         <% end %>
       </div>
+      <div ms-5> <%= task.all_tags_list %>
+      </div>
     </div>
     <div class="d-flex align-items-center">
       <div class="add-btn-task">
