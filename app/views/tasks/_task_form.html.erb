@@ -9,9 +9,16 @@
     <div>
       <div class="d-flex align-items-center">
         <%= f.input :mark_as_done, as: :boolean, input_html: { 'data-action': 'change->check-task#submit'} %>
-        <%= link_to edit_task_path(task), style: "margin-bottom: -8px;" do %>
-        <%= truncate(task.name, length: 25) %>
-        <% end %>
+        <div class="">
+          <div>
+            <%= link_to edit_task_path(task), style: "margin-bottom: -8px;" do %>
+            <%= truncate(task.name, length: 25) %>
+          </div>
+          <% end %>
+          <div>
+            <%= task.all_tags_list %>
+          </div>
+        </div>
       </div>
     </div>
     <div class="d-flex align-items-center">

@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+
   def index
     @user = current_user
     @session = @user.sessions.where(today: Date.today).first_or_create
@@ -22,10 +23,15 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user = current_user
+    if task_params[:tag_list].present?
+      tags_add = task_params[:tag_list]
+      @task.tag_list.add(tags_add)
+      @task.save
+    end
     if task_params[:days].present?
       first_day = task_params[:days].first.to_i
       @task.start_at = Date.today.beginning_of_week + ((first_day > 0 ? first_day : 7) - 1).days
-      @task.user = current_user
       authorize @task
       if @task.valid?
         task_params[:days].map(&:to_i).each do |i|
@@ -34,11 +40,10 @@ class TasksController < ApplicationController
           task.user = current_user
           task.save
         end
-        redirect_to tasks_path
+      redirect_to tasks_path
       else
         render :new
       end
-
     else
       @task.start_at = Date.today unless task_params[:start_at].present?
       @task.user = current_user
@@ -49,6 +54,7 @@ class TasksController < ApplicationController
         render :new
       end
     end
+
   end
 
   def edit
@@ -80,14 +86,6 @@ class TasksController < ApplicationController
   end
 
 
-  def tagged
-    if params[:tag].present?
-      @tasks_tags = policy_scope(Task).tagged_with(params[:tag])
-    else
-      @tasks_tags = policy_scope(Task).all
-    end
-  end
-
   def prioritize
     @task = Task.find(params[:id])
     authorize @task
@@ -100,7 +98,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :details, :priority, :start_at, :tag_list, :duration, :habit, days:[])
+    params.require(:task).permit(:name, :details, :priority, :start_at, :duration, :habit, tag_list:[], days:[])
   end
 
   def regular_tasks
