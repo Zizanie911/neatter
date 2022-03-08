@@ -7,14 +7,17 @@
   } do |f|  %>
   <div class="task-box task-list d-flex align-items-center justify-content-between">
     <div>
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center" data-controller="edit-task-form">
         <%= f.input :mark_as_done, as: :boolean, input_html: { 'data-action': 'change->check-task#submit'} %>
         <div class="">
           <div>
-            <%= link_to edit_task_path(task), style: "margin-bottom: -8px;" do %>
-            <%= truncate(task.name, length: 25) %>
+            <%= link_to edit_task_path(task), style: "margin-bottom: -8px;", data: { action: "click->edit-task-form#toggleForm" } do %>
+              <%= truncate(task.name, length: 25) %>
+            <% end %>
           </div>
-          <% end %>
+          <div class="edit-task-form-container d-none" data-edit-task-form-target="formContainer">
+            <%= render "edit_task_form", task: task %>
+          </div>
           <div>
             <%= task.all_tags_list %>
           </div>
