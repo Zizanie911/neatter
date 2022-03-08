@@ -8,6 +8,7 @@ class DashboardController < ApplicationController
     @week_days = (0...7).map { |i| Date.today.beginning_of_week + i.days }
     @tasks = policy_scope(Task).past
     @tasks_week = policy_scope(Task).past.this_week.order(:start_at)
+    @username = current_user.username
 
     def day_number(object)
       object.strftime("%d")
