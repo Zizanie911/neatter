@@ -1,4 +1,6 @@
-<div>
+<div class="container">
+  <h1>Edit task</h1>
+
   <%= simple_form_for(task) do |f| %>
     <%= f.input :name %>
     <div data-controller="display-toggle">
@@ -25,6 +27,7 @@
   <% end %>
 
   <hr>
+
   <%= link_to tasks_path do %>
     <i class="fa fa-history"></i> Back to list
   <% end %>
