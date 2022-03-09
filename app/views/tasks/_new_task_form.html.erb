@@ -32,7 +32,7 @@
     <i class="far fa-calendar h2 m-2" data-action="click->display-toggle#toggleClassCalendarOptions"></i>
     <i class="fas fa-tag h3 m-2" data-action="click->display-toggle#toggleClassTagOptions"></i>
     <% unless task.id.nil? %>
-      <%= link_to task_path(task), method: :delete, class: "btn-delete" do %>
+      <%= link_to task_path(task), method: :delete, class: "btn-delete h2 m-2" do %>
         <i class="fas fa-trash-alt"></i>
       <% end %>
     <% end %>
