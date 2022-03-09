@@ -18,9 +18,9 @@
   </head>
 
   <body class="<%= params[:controller]%>-<%= params[:action]%>" data-controller="task-form">
-    <% if params[:action] == "review" %>
+    <%# if params[:action] == "review" %>
       <%#= render 'shared/navbartoptwo' %>
-    <% elsif  params[:action] != "home" %>
+    <% unless params[:action] == "home" %>
       <%= render 'shared/navbartop' %>
       <%#= render 'shared/flashes' %>
     <% end %>
