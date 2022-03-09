@@ -1,7 +1,10 @@
 <div data-controller="display-toggle">
   <h1><%=task.persisted? ? "Edit your task" : "Add a task"%></h1>
   <%= simple_form_for(task) do |f| %>
-    <%= f.input :name %>
+    <%= f.input :name,
+                placeholder: "Name",
+                label: false
+    %>
     <%= f.input :days, wrapper_html: { class: "d-none", data: {display_toggle_target: "dayElement" } },
                 collection: Date::DAYNAMES.map { |day_name| [day_name, Date::DAYNAMES.index(day_name)] },
                 as: :check_boxes,
