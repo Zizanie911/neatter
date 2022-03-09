@@ -7,7 +7,7 @@
     remote: true
   } do |f|  %>
 
-      <div class="<%= task.tag_list.present? ? 'parent-conditionnel' : 'parent' %> mb-3 task-box" data-controller="edit-task-form">
+      <div class="<%= task.tag_list.present? ? 'parent-conditionnel' : 'parent' %> mb-3 task-box task-list" data-controller="edit-task-form">
         <div class="div1-conditionnel">
            <fieldset class="boolean optional task_mark_as_done">
             <div class="form-check">
@@ -42,6 +42,5 @@
           </div>
         <% end %>
       </div>
-
   <%= f.submit "ok", class: "d-none", 'data-check-task-target': 'submitBtn' %>
 <% end %>

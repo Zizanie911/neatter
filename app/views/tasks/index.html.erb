@@ -19,24 +19,28 @@
   </div>
   <%= render "hey" %>
   <%= render "estimated_time" %>
-
-  <h6 class="index">High Priority</h6>
-  <ul style="padding-left: 0;">
-    <div class="list-container">
-      <% @tasks.where(priority: true).order(:mark_as_done).each do |task| %>
-        <%= render 'task_form', task: task %>
-      <% end %>
-    </div>
-  </ul>
   <hr>
-  <h6 class="index">Tasks & Habits</h6>
-  <ul style="padding-left: 0;">
-    <div class="list-container">
-      <% @tasks.where(priority: false).order(:mark_as_done).each do |task|%>
-        <%= render 'task_form', task: task %>
-      <% end %>
-    </div>
-  </ul>
+  <%unless @tasks.where(priority: true).count == 0%>
+    <h6 class="index">High Priority</h6>
+    <ul style="padding-left: 0;">
+      <div class="list-container">
+        <% @tasks.where(priority: true).order(:mark_as_done).each do |task| %>
+          <%= render 'task_form', task: task %>
+        <% end %>
+      </div>
+    </ul>
+    <hr>
+  <%end%>
+  <%unless @tasks.where(priority: false).count == 0%>
+    <h6 class="index">Tasks & Habits</h6>
+    <ul style="padding-left: 0;">
+      <div class="list-container">
+        <% @tasks.where(priority: false).order(:mark_as_done).each do |task|%>
+          <%= render 'task_form', task: task %>
+        <% end %>
+      </div>
+    </ul>
+  <%end%>
   <%# <script>
     document.querySelectorAll(".form-check-label.boolean.optional").forEach(element => element.innerHTML = "")
   </script> %>
