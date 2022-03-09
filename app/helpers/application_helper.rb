@@ -10,4 +10,8 @@ module ApplicationHelper
   def day_number(object)
     object.strftime("%d")
   end
+
+  def month(object)
+    object.strftime("%B")
+  end
 end
