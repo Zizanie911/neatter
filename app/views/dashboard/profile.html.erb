@@ -1,9 +1,9 @@
 <div class="container mt-3">
-  <p class="dashboard-h3">Dashboard</p>
-
+  <p class="dashboard-h3 title ">My stats</p>
+  <p class="dashboard-h3">Current week</p>
   <div class="dash">
     <div class="centrer-div-h4">
-      <h4 class= "dashboard-h4 " >All</h4>
+      <h4 class= "dashboard-h4 " >All tasks and habits</h4>
     </div>
     <div class= "flex-dashboard">
       <% @week_days.each do |week_day| %>
@@ -55,6 +55,9 @@
       <% end %>
     </div>
   </div>
+  <br>
+
+  <p class="dashboard-h3">Current month</p>
 
   <div class="dash mb-5">
     <div class="centrer-div-h4"><h4 class= "dashboard-h4 " > <%= month(Date.today) %> </h4></div>
