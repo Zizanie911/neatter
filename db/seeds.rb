@@ -30,8 +30,8 @@ task = Task.new(
   name: "Flashcards",
   details: "",
   priority: false,
-  start_at: Time.parse("#{Date.today} 16:00"),
-  duration: 45
+  start_at: Time.parse("#{Date.today} 16:00")
+  # duration: 45
 )
 task.user = user
 task.save!
@@ -41,7 +41,7 @@ task = Task.new(
   details: "",
   priority: false,
   start_at: Time.parse("#{Date.today} 16:00"),
-  duration: 45,
+  # duration: 45,
   mark_as_done: false
 )
 task.user = user
@@ -52,7 +52,7 @@ task = Task.new(
   details: "",
   priority: false,
   start_at: Time.parse("#{Date.today} 16:00"),
-  duration: 45,
+  # duration: 45,
   mark_as_done: true
 )
 task.user = user
@@ -91,7 +91,7 @@ task = Task.new(
   name: "Meditate",
   details: "",
   priority: false,
-  mark_as_done: false,
+  mark_as_done: true,
   start_at: Date.today,
   days: [1, 2, 3, 5, 6]
 )
@@ -216,3 +216,9 @@ task = Task.new(
 )
 task.user = user
 task.save!
+
+
+task = Task.new(
+  name: "Monday's task",
+  start_at: DateTime.parse("2022-03-01")
+)
