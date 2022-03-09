@@ -29,6 +29,6 @@
     <i class="fas fa-clock h2 m-2" data-action="click->display-toggle#toggleClassOptions"></i>
     <i class="far fa-star h2 m-2" data-action="click->display-toggle#toggleClassPriority" data-display-toggle-target="priorityStar"></i>
     <i class="far fa-calendar h2 m-2" data-action="click->display-toggle#toggleClassCalendarOptions"></i>
-    <%= f.submit 'Add', class: "btn-ghost" %>
+    <%= f.submit task.persisted? ? "Edit" : "Add" , class: "btn-ghost" %>
   <% end %>
 </div>
