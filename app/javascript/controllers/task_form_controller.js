@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "formContainer", "button", "form" ]
+  static targets = [ "formContainer", "button", "form", "closeCross" ]
 
   markAsDone(event){
     // recuperer l'id de la checkbox qui vient d'etre cliquée :
@@ -21,30 +21,29 @@ export default class extends Controller {
   }
 
   toggleForm(event) {
-    if (event.currentTarget.classList.contains('add-button') && this.formContainerTarget.classList.contains('form-visible')) {
+    fetch(event.currentTarget.dataset.path, {
+      headers: {
+        accept: "text/plain"
+      }
+    }).then(response => response.text())
+    .then((data) => {
       this.formContainerTarget.classList.remove("form-visible");
-      this.formContainerTarget.innerHTML = "";
-      event.currentTarget.querySelector('i').style.transform = "rotate(0deg)";
-    } else {
-      this.buttonTarget.querySelector('i').style.transform = "rotate(45deg)";
-      fetch(event.currentTarget.dataset.path, {
-        headers: {
-          accept: "text/plain"
-        }
-      }).then(response => response.text())
-      .then((data) => {
-        this.formContainerTarget.classList.remove("form-visible");
-        if (this.formContainerTarget.innerHTML === "") {
+      if (this.formContainerTarget.innerHTML === "") {
+        this.formContainerTarget.innerHTML = data;
+        this.formContainerTarget.classList.add("form-visible");
+        this.buttonTarget.classList.add("d-none");
+      } else {
+        setTimeout(() => {
           this.formContainerTarget.innerHTML = data;
           this.formContainerTarget.classList.add("form-visible");
-        } else {
-          setTimeout(() => {
-            this.formContainerTarget.innerHTML = data;
-            this.formContainerTarget.classList.add("form-visible");
-          }, 150);
-        }
-      })
-    }
+        }, 150);
+      }
+    })
   }
 
+  closeForm() {
+    this.formContainerTarget.innerHTML = "";
+    this.formContainerTarget.classList.remove("form-visible");
+    this.buttonTarget.classList.remove("d-none");
+  }
 }
