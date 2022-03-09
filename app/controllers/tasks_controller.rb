@@ -135,8 +135,8 @@ class TasksController < ApplicationController
     return "00:00" if t.zero?
 
     if t >= 60
-      h = t.modulo(60)
-      mn = t - (h * 60)
+      h = t / 60
+      mn = t.modulo(60)
       return "#{h}:00" if mn.zero?
 
       return "#{h}:#{mn}"

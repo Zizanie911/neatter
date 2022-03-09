@@ -12,6 +12,7 @@ User.destroy_all
 
 puts "Creating 1 user and 4 tasks..."
 
+
 user = User.new(
   email: "stephen@email.com",
   password: "123456",

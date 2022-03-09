@@ -18,7 +18,7 @@
     </div>
   </div>
   <%= render "hey" %>
-  <%= render "estimated_time" %>
+  <%= render "estimated_time" unless @estimated_time == "00:00" %>
   <hr>
   <%unless @tasks.where(priority: true).count == 0%>
     <h6 class="index">High Priority</h6>
