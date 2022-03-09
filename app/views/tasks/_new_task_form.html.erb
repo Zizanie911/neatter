@@ -1,5 +1,8 @@
 <div data-controller="display-toggle">
-  <h1><%=task.persisted? ? "Edit your task" : "Add a task"%></h1>
+  <div class="form-top">
+    <h1><%=task.persisted? ? "Edit your task" : "Add a task"%></h1>
+    <svg data-action="click->task-form#closeForm" height="28" viewBox="0 0 21 21" width="28" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(2 2)"><circle cx="8.5" cy="8.5" r="8"/><g transform="matrix(0 1 -1 0 17 0)"><path d="m5.5 11.5 6-6"/><path d="m5.5 5.5 6 6"/></g></g></svg>
+  </div>
   <%= simple_form_for(task) do |f| %>
     <%= f.input :name,
                 placeholder: "Name",
@@ -40,6 +43,6 @@
         <i class="fas fa-trash-alt"></i>
       <% end %>
     <% end %>
-    <%= f.submit task.persisted? ? "Update" : "Add" , class: "btn-ghost" %>
+    <%= f.submit task.persisted? ? "Update" : "Add" , class: "btn add-button form-submit-btn" %>
   <% end %>
 </div>
