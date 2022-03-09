@@ -7,9 +7,9 @@
     remote: true
   } do |f|  %>
 
-      <div class="parent-conditionnel mb-2" data-controller="edit-task-form">
+      <div class="<%= task.tag_list.present? ? 'parent-conditionnel' : 'parent' %> mb-3 task-box" data-controller="edit-task-form">
         <div class="div1-conditionnel">
-           <fieldset class="mb-3 boolean optional task_mark_as_done">
+           <fieldset class="boolean optional task_mark_as_done">
             <div class="form-check">
               <input name="task[mark_as_done]" type="hidden" value="0">
               <input
@@ -36,7 +36,9 @@
         </div>
         <% if task.tag_list.present? %>
           <div class="div4-conditionnel">
-            <%= task.all_tags_list %>
+            <% task.tag_list.each do |tag| %>
+              <span class='tag_on_tasks_list'><%= tag %></span>
+            <% end %>
           </div>
         <% end %>
       </div>
