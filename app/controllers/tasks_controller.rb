@@ -19,6 +19,9 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     authorize @task
+    respond_to do |format|
+      format.text { render(partial: "tasks/new_task_form", locals: {task: @task }, formats: [:html]) }
+    end
   end
 
   def create
@@ -60,6 +63,9 @@ class TasksController < ApplicationController
   def edit
     @task = Task.find(params[:id])
     authorize @task
+    respond_to do |format|
+      format.text { render(partial: "tasks/new_task_form", locals: {task: @task }, formats: [:html]) }
+    end
   end
 
   def update
