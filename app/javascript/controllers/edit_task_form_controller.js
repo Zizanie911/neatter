@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "formContainer" ]
+  static targets = [ "formContainer", "checkbox" ]
 
   connect() {
     console.log("test");

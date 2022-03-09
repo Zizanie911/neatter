@@ -1,7 +1,19 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "formContainer", "button" ]
+  static targets = [ "formContainer", "button", "form" ]
+
+  markAsDone(event){
+    // recuperer l'id de la checkbox qui vient d'etre cliquée :
+    const eventTargetId = event.currentTarget.dataset.taskId;
+    this.formTargets.forEach(target => {
+      // Iterer sur chacune des formTarget pour trouver cellle dont le data-task-id
+      // correspond à celle de la checkbox
+      if (target.dataset.taskId === eventTargetId) {
+        target.requestSubmit();
+      }
+    });
+  }
 
   connect() {
     // console.log("task_form");
@@ -34,4 +46,5 @@ export default class extends Controller {
       })
     }
   }
+
 }
