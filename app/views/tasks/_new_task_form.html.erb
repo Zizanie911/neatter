@@ -16,7 +16,7 @@
                 wrapper_html: { class: "d-none", data: { display_toggle_target: "calendarOptionElement"}  },
                 input_html: { data: {task_calendar_target:"date", action:"click->task-calendar#showCalendar"}, value: (task.start_at.present? ? task.start_at.strftime("%Y-%m-%dT%H:%M") : Time.now.beginning_of_hour.strftime("%Y-%m-%dT%H:%M")) }
     %>
-    <%= f.input :tag_list, collection: ["🏠 home", "🧘🏽‍♀️ well-being", "🏖 holidays", "💻 work", "📘 reading", " 🥑 health", "🏃‍♂️ sport", "📖 learning", "🍻 friends", "👶🏾 family"],
+    <%= f.input :tag_list, collection: ["👶🏾 family", "🍻 friends", " 🥑 health", "🏖 holidays", "🏠 home", "📖 learning", "📘 reading", "🏃‍♂️ sport", "🧘🏽‍♀️ well-being",  "💻 work" ],
                 as: :check_boxes,
                 include_hidden: false,
                 wrapper_html: { class: "d-none", data: { display_toggle_target: "tagOptionElement"} },
