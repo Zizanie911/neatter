@@ -13,9 +13,9 @@ User.destroy_all
 puts "Creating 1 user and 4 tasks..."
 
 user = User.new(
-  email: "beatrice@gmail.com",
-  password: "secret",
-  username: "Bea"
+  email: "stephen@email.com",
+  password: "123456",
+  username: "Stephen"
 )
 user.save!
 
@@ -26,63 +26,95 @@ session.user = user
 session.save!
 
 task = Task.new(
-  name: "Yoga",
-  details: "don't forget your mat!",
+  name: "Flashcards",
+  details: "",
+  priority: false,
+  start_at: Time.parse("#{Date.today} 16:00")
+  # duration: 45
+)
+task.user = user
+task.save!
+
+task = Task.new(
+  name: "Buy new shirt",
+  details: "",
   priority: false,
   start_at: Time.parse("#{Date.today} 16:00"),
-  duration: 45,
-  days: [2, 4]
+  # duration: 45,
+  mark_as_done: false
+)
+task.user = user
+task.save!
+
+task = Task.new(
+  name: "Push app into production",
+  details: "",
+  priority: false,
+  start_at: Time.parse("#{Date.today} 16:00"),
+  # duration: 45,
+  mark_as_done: true
+)
+task.user = user
+task.save!
+
+task = Task.new(
+  name: "Pitch prep",
+  details: "",
+  mark_as_done: false,
+  priority: true,
+  start_at: Date.today
+)
+task.user = user
+task.save!
+
+task = Task.new(
+  name: "Book AirBnb in Lisbon",
+  priority: false,
+  start_at: Date.today
+)
+task.user = user
+task.save!
+
+task = Task.new(
+  name: "Yoga",
+  details: "",
+  priority: false,
+  mark_as_done: false,
+  start_at: Date.today,
+  days: [1, 2, 3, 5, 6]
+)
+task.user = user
+task.save!
+
+task = Task.new(
+  name: "Meditate",
+  details: "",
+  priority: false,
+  mark_as_done: true,
+  start_at: Date.today,
+  days: [1, 2, 3, 5, 6]
+)
+task.user = user
+task.save!
+
+task = Task.new(
+  name: "Learn Portuguese",
+  details: "",
+  priority: false,
+  mark_as_done: false,
+  start_at: Date.today,
+  days: [1, 2, 3, 5, 6]
 )
 task.user = user
 task.save!
 
 task = Task.new(
   name: "Running",
-  details: "don't forget your mat!",
-  priority: false,
-  start_at: Time.parse("#{Date.today} 16:00"),
-  duration: 45,
-  mark_as_done: true,
-  days: [2, 3, 4, 5]
-)
-task.user = user
-task.save!
-task = Task.new(
-  name: "play guitar",
-  details: "Rock and Roll",
-  priority: false,
-  start_at: Time.parse("#{Date.today} 16:00"),
-  duration: 45,
-  mark_as_done: true,
-  days: [2, 3, 4, 5]
-)
-task.user = user
-task.save!
-
-task = Task.new(
-  name: "Send email to Matthieu",
-  details: "matthieu@gmail.com",
-  mark_as_done: true,
-  priority: true,
-  start_at: Date.today
-)
-task.user = user
-task.save!
-
-task = Task.new(
-  name: "Book hotel",
-  priority: true,
-  start_at: Date.today
-)
-task.user = user
-task.save!
-
-task = Task.new(
-  name: "Buy beers",
   details: "",
   priority: false,
-  mark_as_done: true,
-  start_at: Date.today
+  mark_as_done: false,
+  start_at: Date.today,
+  days: [1, 2, 3, 5, 6]
 )
 task.user = user
 task.save!
@@ -90,7 +122,7 @@ task.save!
 puts "Creating 1 user and 3 tasks yesterday ..."
 
 3.times do task = Task.new(
-    name: "Buy beers",
+    name: "Swimming",
     details: "",
     priority: false,
     mark_as_done: false,
@@ -102,7 +134,7 @@ end
 
 puts "Creating 1 user and 2 tasks yesterday ..."
 2.times do task = Task.new(
-  name: "Buy beers",
+  name: "Swimming",
   details: "",
   priority: false,
   mark_as_done: true,
@@ -114,7 +146,7 @@ end
 
 puts "Creating 1 user and 2 habits ..."
 2.times do task = Task.new(
-  name: "Buy beers",
+  name: "Swimming",
   details: "",
   priority: false,
   mark_as_done: true,
@@ -126,7 +158,7 @@ end
 
 puts "Creating 1 user and 4 tasks yesterday ..."
 1.times do task = Task.new(
-  name: "Buy beers",
+  name: "Swimming",
   details: "",
   priority: false,
   mark_as_done: true,
@@ -138,7 +170,7 @@ end
 
 puts "Creating 1 user and 2 habits ..."
 4.times do task = Task.new(
-  name: "Buy beers",
+  name: "Swimming",
   details: "",
   priority: false,
   mark_as_done: true,
@@ -147,9 +179,10 @@ puts "Creating 1 user and 2 habits ..."
   task.user = user
   task.save!
 end
+
 puts "Creating 1 user and 2 habits ..."
 3.times do task = Task.new(
-  name: "Buy beers",
+  name: "Swimming",
   details: "",
   priority: false,
   mark_as_done: true,
@@ -161,12 +194,12 @@ end
 
 
 3.times do task = Task.new(
-  name: "Buy beers",
+  name: "Swimming",
   details: "",
   priority: false,
   mark_as_done: true,
-  days: [1, 3, 4],
-  start_at: Date.today - 1.days
+  days: [1, 2],
+  start_at: Date.today - 2.days
   )
   task.user = user
   task.save!
@@ -177,8 +210,14 @@ task = Task.new(
   details: "",
   priority: false,
   mark_as_done: false,
-  days: [1, 3, 4],
-  start_at: Date.today
+  days: [1, 2],
+  start_at: Date.today - 2.days
 )
 task.user = user
 task.save!
+
+
+task = Task.new(
+  name: "Monday's task",
+  start_at: DateTime.parse("2022-03-01")
+)
