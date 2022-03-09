@@ -1,5 +1,6 @@
 class NextdayController < ApplicationController
   def review
+    @username = current_user.username
     @tasks = policy_scope(Task)
     @postponed = false
   end
