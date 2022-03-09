@@ -6,9 +6,8 @@
     data: { controller: 'check-task' }
   } do |f|  %>
   <div class="task-box task-list d-flex align-items-center justify-content-between">
-    <div>
+    <div class="parent">
       <div class="d-flex align-items-center" data-controller="edit-task-form">
-
         <%= f.input :mark_as_done, as: :boolean, input_html: { 'data-action': 'change->check-task#submit'} %>
         <div class="" data-path=<%= edit_task_path(task) %> data-action="click->task-form#toggleForm">
           <div>
@@ -28,3 +27,17 @@
   </div>
   <%= f.submit "ok", class: "d-none", 'data-check-task-target': 'submitBtn' %>
 <% end %>
+
+<div class="parent">
+  <div class="div1"> </div>
+  <div class="div2"> </div>
+  <div class="div3"> </div>
+</div>
+
+
+<div class="parent-tag">
+  <div class="div1-tag"> </div>
+  <div class="div2-tag"> </div>
+  <div class="div3-tag"> </div>
+  <div class="div4-tag"> </div>
+</div>
