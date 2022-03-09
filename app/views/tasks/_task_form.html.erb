@@ -6,12 +6,12 @@
     data: { controller: 'check-task' }
   } do |f|  %>
 
-      <div class="<%= task.tag_list.present? ? 'parent-conditionnel' : 'parent' %> mb-3" data-controller="edit-task-form">
+      <div class="<%= task.tag_list.present? ? 'parent-conditionnel' : 'parent' %> mb-3 task-box" data-controller="edit-task-form">
         <div class="div1-conditionnel">
            <fieldset class="boolean optional task_mark_as_done">
             <div class="form-check">
               <input name="task[mark_as_done]" type="hidden" value="0">
-              <input class="form-check-input is-valid boolean optional" data-action="change->check-task#submit" type="checkbox" value="<%= task.mark_as_done? ? 1 : 0 %>"  <%= "checked=checked" if task.mark_as_done? %> name="task[mark_as_done]" id="task_<%= task.id %>_task_mark_as_done">
+              <input class="form-check-input is-valid boolean optional ms-0" data-action="change->check-task#submit" type="checkbox" value="<%= task.mark_as_done? ? 1 : 0 %>"  <%= "checked=checked" if task.mark_as_done? %> name="task[mark_as_done]" id="task_<%= task.id %>_task_mark_as_done">
               <label class="form-check-label boolean optional" for="task_<%= task.id %>_task_mark_as_done"></label>
             </div>
           </fieldset>
