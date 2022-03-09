@@ -44,6 +44,6 @@ class NextdayController < ApplicationController
     @session.passed = true
     @session.save!
 
-    redirect_to profile_path
+    redirect_to tasks_path
   end
 end
