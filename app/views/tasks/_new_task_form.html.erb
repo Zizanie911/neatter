@@ -13,7 +13,7 @@
                 html5: true,
                 required: false,
                 wrapper_html: { class: "d-none", data: { display_toggle_target: "calendarOptionElement"}  },
-                input_html: { data: {task_calendar_target:"date", action:"click->task-calendar#showCalendar"}, value: Time.now.beginning_of_hour.strftime("%Y-%m-%dT %H:%M") }
+                input_html: { data: {task_calendar_target:"date", action:"click->task-calendar#showCalendar"}, value: Time.now.beginning_of_hour.strftime("%Y-%m-%dT%H:%M") }
     %>
     <%= f.input :tag_list, collection: ["🏠 home", "🧘🏽‍♀️ yoga", "🏖 holidays", "💻 work","📘 reading", " 🥑 health", "⚽️ sport", "📖 learning", "🍻 friends", "👶🏾 family"],
                 as: :check_boxes,
@@ -29,6 +29,6 @@
     <i class="fas fa-clock h2 m-2" data-action="click->display-toggle#toggleClassOptions"></i>
     <i class="far fa-star h2 m-2" data-action="click->display-toggle#toggleClassPriority" data-display-toggle-target="priorityStar"></i>
     <i class="far fa-calendar h2 m-2" data-action="click->display-toggle#toggleClassCalendarOptions"></i>
-    <%= f.submit 'Add', class: "btn-ghost" %>
+    <%= f.submit task.persisted? ? "Edit" : "Add" , class: "btn-ghost" %>
   <% end %>
 </div>
