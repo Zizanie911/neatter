@@ -10,13 +10,10 @@ class DashboardController < ApplicationController
     @tasks_week = policy_scope(Task).past.this_week.order(:start_at)
     @username = current_user.username
 
-    def day_number(object)
-      object.strftime("%d")
-    end
 
     # Variable pour calculer les taches totales tasks et habits par mois
-    start_date = day_number(Date.today.at_beginning_of_month).to_i
-    end_date = day_number(Date.today.at_beginning_of_month.next_month - 1.days).to_i
+    start_date = Date.today.at_beginning_of_month
+    end_date = Date.today.at_beginning_of_month.next_month - 1.days
 
     @month_days = (start_date..end_date)
 

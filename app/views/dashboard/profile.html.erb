@@ -1,6 +1,5 @@
 <div class="container mt-3">
-  <h3 class="dashboard-h3"> Hi, <%=@user.username%></h3>
-  <p class="dashboard-h3">Trend your tasks and habits</p>
+  <p class="dashboard-h3">Dashboard</p>
 
   <div class="dash">
     <div class="centrer-div-h4">
@@ -14,7 +13,7 @@
           <% if week_day_coef %>
             <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-<%=(week_day_coef * 100).to_i%> color-icon"></i></div>
           <% else %>
-            <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-10 color-icon"></i></div>
+            <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-10 color-default"></i></div>
           <% end %>
         </div>
       <% end %>
@@ -31,7 +30,7 @@
           <% if week_day_coef %>
             <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-<%=(week_day_coef * 100).to_i%> color-icon"></i></div>
           <% else %>
-            <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-10 color-icon"></i></div>
+            <div class=" item-dashboard"> <i class="fas fa-circle neat-opacity-10 color-default"></i></div>
           <% end %>
         </div>
       <% end %>
@@ -50,27 +49,32 @@
           <% if week_day_coef %>
             <div class=" item-dashboard"><i class="fas fa-circle neat-opacity-<%=(week_day_coef * 100).to_i%> color-icon"></i></div>
           <% else %>
-            <div class=" item-dashboard"><i class="fas fa-circle neat-opacity-10 color-icon"></i></div>
+            <div class=" item-dashboard"><i class="fas fa-circle neat-opacity-10 color-default"></i></div>
           <% end %>
         </div>
       <% end %>
     </div>
   </div>
 
-  <div class="dash">
-    <div class="centrer-div-h4"><h4 class= "dashboard-h4 " >Your month</h4></div>
+  <div class="dash mb-5">
+    <div class="centrer-div-h4"><h4 class= "dashboard-h4 " > <%= month(Date.today) %> </h4></div>
     <div class= "flex-dashboard grid-dash">
       <% @month_days.each do |month_day| %>
         <div>
-          <div class="item-dashboard"><%= month_day%></div>
-          <% week_day_coef = @opacity_coeff[month_day] %>
-          <% if week_day_coef %>
-            <div class="item-dashboard"><i class="fas fa-circle neat-opacity-<%=(week_day_coef * 100).to_i%> color-icon"></i></div>
+          <div class="item-dashboard"><%= day_number(month_day)%></div>
+          <% month_coef = @opacity_coeff[month_day] %>
+          <% if month_coef %>
+            <div class="item-dashboard"><i class="fas fa-circle neat-opacity-<%=(month_coef * 100).to_i%> color-icon"></i></div>
           <% else %>
-            <div class="item-dashboard"><i class="fas fa-circle neat-opacity-10 color-icon"></i></div>
+            <div class="item-dashboard"><i class="fas fa-circle neat-opacity-10 color-default"></i></div>
           <% end %>
         </div>
       <% end %>
     </div>
   </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
 </div>
