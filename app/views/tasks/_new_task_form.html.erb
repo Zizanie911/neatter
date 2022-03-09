@@ -18,7 +18,8 @@
     <%= f.input :tag_list, collection: ["🏠 home", "🧘🏽‍♀️ yoga", "🏖 holidays", "💻 work","📘 reading", " 🥑 health", "⚽️ sport", "📖 learning", "🍻 friends", "👶🏾 family"],
                 as: :check_boxes,
                 include_hidden: false,
-                input_html: { class: "tag-selector" },
+                wrapper_html: { class: "d-none", data: { display_toggle_target: "tagOptionElement"} },
+                input_html: { class: "tag-selector", data: {tag_option_target:"tags", action:"click->task-tag#showTags"} },
                 item_wrapper_class: 'tag-item' %>
 
     <%= f.input :duration, placeholder: "minutes",
@@ -29,6 +30,7 @@
     <i class="fas fa-clock h2 m-2" data-action="click->display-toggle#toggleClassOptions"></i>
     <i class="far fa-star h2 m-2" data-action="click->display-toggle#toggleClassPriority" data-display-toggle-target="priorityStar"></i>
     <i class="far fa-calendar h2 m-2" data-action="click->display-toggle#toggleClassCalendarOptions"></i>
+    <i class="fas fa-tag h3 m-2" data-action="click->display-toggle#toggleClassTagOptions"></i>
     <%= f.submit task.persisted? ? "Edit" : "Add" , class: "btn-ghost" %>
   <% end %>
 </div>
