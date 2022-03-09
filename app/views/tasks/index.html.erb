@@ -19,7 +19,7 @@
   </div>
   <%= render "hey" %>
   <%= render "estimated_time" %>
-
+  <hr>
   <%unless @tasks.where(priority: true).count == 0%>
     <h6 class="index">High Priority</h6>
     <ul style="padding-left: 0;">
@@ -41,6 +41,7 @@
       </div>
     </ul>
   <%end%>
+>>>>>>> ca60bbb50f1a69cc71cd44513a90ea23c3f607ca
   <%# <script>
     document.querySelectorAll(".form-check-label.boolean.optional").forEach(element => element.innerHTML = "")
   </script> %>
