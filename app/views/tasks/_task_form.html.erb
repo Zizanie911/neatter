@@ -8,14 +8,15 @@
   <div class="task-box task-list d-flex align-items-center justify-content-between">
     <div>
       <div class="d-flex align-items-center" data-controller="edit-task-form">
+
         <%= f.input :mark_as_done, as: :boolean, input_html: { 'data-action': 'change->check-task#submit'} %>
         <div class="" data-path=<%= edit_task_path(task) %> data-action="click->task-form#toggleForm">
           <div>
             <%= truncate(task.name, length: 25) %>
           </div>
-          <div>
+          <%# <div> %>
             <%= task.all_tags_list %>
-          </div>
+          <%# </div> %>
         </div>
       </div>
     </div>

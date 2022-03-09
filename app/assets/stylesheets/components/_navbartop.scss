@@ -28,3 +28,21 @@
   background-color: $midnight;
   color: white ;
 }
+
+
+.dropdown-menu-pad{
+  padding: none;
+  position: absolute;
+  z-index: 1000;
+  display: none;
+  min-width: 10rem;
+  margin: 0;
+  font-size: 1rem;
+  color: #DADADA;
+  text-align: left;
+  list-style: none;
+  background-color: black;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+}
