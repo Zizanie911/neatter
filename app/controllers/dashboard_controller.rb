@@ -11,6 +11,8 @@ class DashboardController < ApplicationController
     @username = current_user.username
 
 
+    @total_tasks_per_week = current_user.tasks.group_by_week(:start_at).count
+
     # Variable pour calculer les taches totales tasks et habits par mois
     start_date = Date.today.at_beginning_of_month
     end_date = Date.today.at_beginning_of_month.next_month - 1.days

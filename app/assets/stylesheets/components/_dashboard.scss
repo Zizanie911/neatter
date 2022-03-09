@@ -8,9 +8,13 @@
 }
 
 .dashboard-h3 {
-  text-align: center;
+  text-align: left;
   font-size: 20px;
   color: $white;
+}
+
+.title {
+  font-weight: bold;
 }
 .dash {
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
