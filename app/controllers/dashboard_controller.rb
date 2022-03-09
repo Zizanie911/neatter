@@ -25,7 +25,7 @@ class DashboardController < ApplicationController
 
 
     @opacity_coeff = @total_tasks_per_day.map do |date, counter|
-      [date, @done_tasks_per_day[date].to_i.fdiv(counter)]
+      [date, @done_tasks_per_day[date].to_i == 0 ? 0 : @done_tasks_per_day[date].to_i.fdiv(counter)]
     end.to_h
 
     # les tâches seules
@@ -33,15 +33,14 @@ class DashboardController < ApplicationController
     @done_tasks_only_per_day = current_user.tasks.where(days: nil).where(mark_as_done: true).group_by_day(:start_at).count
 
     @opacity_coeff_tasks = @total_tasks_only_per_day.map do |date, counter|
-      [date, @done_tasks_only_per_day[date].to_i.fdiv(counter)]
+      [date, @done_tasks_only_per_day[date].to_i == 0 ? 0 : @done_tasks_only_per_day[date].to_i.fdiv(counter)]
     end.to_h
 
     # les habits seules
     @total_habits_only_per_day = current_user.tasks.where.not(days: nil).group_by_day(:start_at).count
     @done_habits_only_per_day = current_user.tasks.where.not(days: nil).where(mark_as_done: true).group_by_day(:start_at).count
-
     @opacity_coeff_habits = @total_habits_only_per_day.map do |date, counter|
-      [date, @done_habits_only_per_day[date].to_i.fdiv(counter)]
+      [date, @done_habits_only_per_day[date].to_i == 0 ? 0 : @done_habits_only_per_day[date].to_i.fdiv(counter)]
     end.to_h
 
   end

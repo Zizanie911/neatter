@@ -46,7 +46,7 @@
         <div>
           <div class="item-dashboard"><%= day_time(week_day) %></div>
           <% week_day_coef = @opacity_coeff_habits[week_day] %>
-          <% if week_day_coef %>
+          <% if week_day_coef  %>
             <div class=" item-dashboard"><i class="fas fa-circle neat-opacity-<%=(week_day_coef * 100).to_i%> color-icon"></i></div>
           <% else %>
             <div class=" item-dashboard"><i class="fas fa-circle neat-opacity-10 color-default"></i></div>
