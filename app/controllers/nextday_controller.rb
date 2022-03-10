@@ -49,10 +49,8 @@ class NextdayController < ApplicationController
   end
 
   def reset
-
     # TODO
     # 1/ Itérer sur les mark_as_done_task_ids de params
-
     unless params[:mark_as_done_task_ids].nil?
       Task.today.all.each do |task|
         if params[:mark_as_done_task_ids].include?(task.id.to_s)
@@ -85,6 +83,14 @@ class NextdayController < ApplicationController
     @user = current_user
     @session = @user.sessions.where(today: Date.today).first_or_initialize
     @session.passed = true
+    @session.save!
+
+    redirect_to tasks_path
+  end
+
+  def display_yesterday
+    @session = @user.sessions.where(today: Date.today).first_or_initialize
+    @session.passed = false
     @session.save!
 
     redirect_to tasks_path

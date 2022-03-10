@@ -1,4 +1,5 @@
 import { Controller } from "stimulus"
+import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
   static targets = [ "formContainer", "button", "form", "closeCross" ]
@@ -10,7 +11,21 @@ export default class extends Controller {
       // Iterer sur chacune des formTarget pour trouver cellle dont le data-task-id
       // correspond à celle de la checkbox
       if (target.dataset.taskId === eventTargetId) {
-        target.requestSubmit();
+        // if (target.requestSubmit) {
+        //   target.requestSubmit();
+        // } else {
+        //   target.submit()
+        // };
+        fetch(target.action, {
+          method: "PATCH",
+          headers: { "Accept": "text/plain", "X-CSRF-Token": csrfToken() },
+          body: new FormData(target)
+        })
+        .then(response=>response.text())
+        .then((data)=>{
+          // console.log(data)
+          target.classList.toggle("mark_done_grey")
+        })
       }
     });
   }
@@ -21,24 +36,24 @@ export default class extends Controller {
   }
 
   toggleForm(event) {
-    fetch(event.currentTarget.dataset.path, {
-      headers: {
-        accept: "text/plain"
-      }
-    }).then(response => response.text())
-    .then((data) => {
-      this.formContainerTarget.classList.remove("form-visible");
-      if (this.formContainerTarget.innerHTML === "") {
-        this.formContainerTarget.innerHTML = data;
-        this.formContainerTarget.classList.add("form-visible");
-        this.buttonTarget.classList.add("d-none");
-      } else {
-        setTimeout(() => {
+      fetch(event.currentTarget.dataset.path, {
+        headers: {
+          accept: "text/plain"
+        }
+      }).then(response => response.text())
+      .then((data) => {
+        this.formContainerTarget.classList.remove("form-visible");
+        if (this.formContainerTarget.innerHTML === "") {
           this.formContainerTarget.innerHTML = data;
           this.formContainerTarget.classList.add("form-visible");
-        }, 150);
-      }
-    })
+          this.buttonTarget.classList.add("d-none");
+        } else {
+          setTimeout(() => {
+            this.formContainerTarget.innerHTML = data;
+            this.formContainerTarget.classList.add("form-visible");
+          }, 150);
+        }
+      })
   }
 
   closeForm() {

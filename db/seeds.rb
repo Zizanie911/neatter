@@ -26,8 +26,19 @@ session.user = user
 session.save!
 
 task = Task.new(
-  name: "Yoga",
-  details: "don't forget your mat!",
+  name: "Flashcards",
+  details: "",
+  priority: false,
+  start_at: Time.parse("#{Date.today} 16:00")
+  # duration: 45
+)
+task.user = user
+task.tag_list.add("📖 learning")
+task.save!
+
+task = Task.new(
+  name: "Buy new shirt",
+  details: "",
   priority: false,
   start_at: Time.parse("#{Date.today} 16:00"),
   duration: 45,
@@ -57,6 +68,7 @@ task = Task.new(
   days: [2, 3, 4, 5]
 )
 task.user = user
+task.tag_list.add("💻 work")
 task.save!
 
 task = Task.new(
@@ -67,6 +79,7 @@ task = Task.new(
   start_at: Date.today
 )
 task.user = user
+task.tag_list.add("💻 work")
 task.save!
 
 task = Task.new(
@@ -75,16 +88,55 @@ task = Task.new(
   start_at: Date.today
 )
 task.user = user
+task.tag_list.add("🏖 holidays")
 task.save!
 
 task = Task.new(
-  name: "Buy beers",
+  name: "Yoga",
+  details: "",
+  priority: false,
+  mark_as_done: false,
+  start_at: Date.today,
+  days: [1, 2, 3, 5, 6]
+)
+task.user = user
+task.tag_list.add("🧘🏽‍♀️ well-being")
+task.save!
+
+task = Task.new(
+  name: "Meditate",
   details: "",
   priority: false,
   mark_as_done: true,
-  start_at: Date.today
+  start_at: Date.today,
+  days: [1, 2, 3, 5, 6]
 )
 task.user = user
+task.tag_list.add("🧘🏽‍♀️ well-being")
+task.save!
+
+task = Task.new(
+  name: "Learn Portuguese",
+  details: "",
+  priority: false,
+  mark_as_done: false,
+  start_at: Date.today,
+  days: [1, 2, 3, 5, 6]
+)
+task.user = user
+task.tag_list.add("📖 learning")
+task.save!
+
+task = Task.new(
+  name: "Running",
+  details: "",
+  priority: false,
+  mark_as_done: false,
+  start_at: Date.today,
+  days: [1, 2, 3, 5, 6]
+)
+task.user = user
+task.tag_list.add(" 🥑 health", "🏃‍♂️ sport")
 task.save!
 
 puts "Creating 1 user and 3 tasks yesterday ..."
