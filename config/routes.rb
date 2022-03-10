@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "profile", to: 'dashboard#profile', as: :profile
   get "review", to: 'nextday#review', as: :review
   post "reset", to: 'nextday#reset', as: :reset
+  post "yesterday", to: 'tasks#yesterday', as: :yesterday
   get '/tagged', to: "tasks#tagged", as: :tagged
 
 end
