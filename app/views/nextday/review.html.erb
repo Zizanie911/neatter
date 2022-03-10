@@ -1,14 +1,14 @@
 <div class="container mt-4">
-  <div>
+  <div class="text-calendar">
     <%=better_time(Date.today) %>
   </div>
-  <div>
+  <div class="hey">
     <strong><%=pluralize @nb_tasks_not_done, 'task'%></strong>,
     <strong><%=pluralize @nb_habits_not_done, 'habit'%></strong> remaining
   </div>
   <hr>
   <div class="mt-3">
-    <p class="mb-3">Review your tasks before starting a new day <%@username%></p>
+    <p class="mb-3">Review your tasks before moving to tomorrow <%@username%></p>
   </div>
 
 <%= simple_form_for :reset, url: reset_path, method: :post do |f| %>
@@ -34,6 +34,6 @@
     <br>
     <br>
 
-    <%= f.submit "New Day", class:"add-button next-day fixed-bottom", 'data-postpone-task-target': 'submitBtn', 'data-action': 'click->postpone-task#submit' %>
+    <%= f.submit "Go to tomorrow", class:"add-button next-day fixed-bottom", 'data-postpone-task-target': 'submitBtn', 'data-action': 'click->postpone-task#submit' %>
   <% end %>
 </div>
