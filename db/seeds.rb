@@ -46,13 +46,35 @@ task = Task.new(
   start_at: Time.parse("#{Date.today}"),
   duration: 45
 )
+task.tag_list.add("🛒 errands")
 task.user = user
+task.save!
+
+task = Task.new(
+  name: "Lunch with the team",
+  priority: false,
+  start_at: Date.today,
+  duration: 60
+)
+task.user = user
+task.tag_list.add("🍻 friends")
+task.save!
+
+task = Task.new(
+  name: "Invoice aKagreen",
+  priority: false,
+  start_at: Date.today,
+  duration: 15
+)
+task.user = user
+task.tag_list.add("💰 finance")
 task.save!
 
 task = Task.new(
   name: "Book hotel",
   priority: true,
-  start_at: Date.today
+  start_at: Date.today,
+  duration: 15
 )
 task.user = user
 task.tag_list.add("🏖 holidays")
@@ -64,6 +86,7 @@ task = Task.new(
   priority: false,
   mark_as_done: false,
   start_at: Date.today,
+  duration: 30,
   days: [1, 2, 3, 5, 6]
 )
 task.user = user
@@ -74,6 +97,7 @@ task = Task.new(
   name: "Meditate",
   mark_as_done: true,
   start_at: Date.today,
+  duration: 15,
   days: [1, 2, 3, 5, 6]
 )
 task.user = user
@@ -84,6 +108,7 @@ task = Task.new(
   name: "Learn Portuguese",
   mark_as_done: false,
   start_at: Date.today,
+  duration: 45,
   days: [1, 2, 3, 5, 6]
 )
 task.user = user
@@ -94,6 +119,7 @@ task = Task.new(
   name: "Running",
   mark_as_done: false,
   start_at: Date.today,
+  duration: 60,
   days: [1, 2, 3, 5, 6]
 )
 task.user = user
