@@ -6,10 +6,8 @@ class NextdayController < ApplicationController
   end
 
   def reset
-
     # TODO
     # 1/ Itérer sur les mark_as_done_task_ids de params
-
     unless params[:mark_as_done_task_ids].nil?
       Task.today.all.each do |task|
         if params[:mark_as_done_task_ids].include?(task.id.to_s)

@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <div class="text-calendar">
-    <%=better_time(Date.today) %>
+    <%= better_time(Date.today) %>
   </div>
   <div class="hey">
     <strong><%=pluralize @nb_tasks_not_done, 'task'%></strong>,
@@ -13,8 +13,11 @@
 
   <ul style="padding-left: 0;">
     <div class="list-container">
-      <% @tasks.today.each do |task| %>
-        <%= render 'review_list', task: task %>
+      <%= simple_form_for :reset, url: reset_path, method: :post do |f| %>
+        <% @tasks.today.each do |task| %>
+          <%= render 'review_task', task: task %>
+        <% end %>
+        <%= f.submit "New Day", class:"add-button next-day fixed-bottom" %>
       <% end %>
     </div>
   </ul>
