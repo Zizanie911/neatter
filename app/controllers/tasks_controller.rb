@@ -101,6 +101,16 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def yesterday
+    @user = current_user
+    @session = @user.sessions.where(today: Date.today).first_or_initialize
+    @session.passed = false
+    @session.save!
+
+    # raise
+    redirect_to tasks_path
+  end
+
   private
 
   def task_params
