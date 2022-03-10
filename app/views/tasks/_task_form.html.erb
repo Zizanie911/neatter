@@ -27,7 +27,7 @@
           </fieldset>
         </div>
         <div class="div2-conditionnel" data-path=<%= edit_task_path(task) %> data-action="click->task-form#toggleForm">
-          <%= truncate(task.name, length: 25) %>
+          <%= truncate(task.name, length: 28) %>
         </div>
         <div class="div3-conditionnel">
           <%= link_to prioritize_task_path(task), method: :patch do %>

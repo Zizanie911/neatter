@@ -10,7 +10,7 @@
 .tag-selector + label {
   cursor: pointer;
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 1rem;
   border-radius: 50rem;
   padding: 0.1rem 0.5rem;
   background-color: $white;
@@ -28,7 +28,7 @@
 // effet des tags dans la liste de l'index
 
 .tag_on_tasks_list {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   border-radius: 50rem;
   padding: 0.1rem 0.5rem;
   color: $gray;
@@ -36,4 +36,12 @@
   margin-right: 0.6rem;
   margin-bottom: 0.4rem;
   padding: 5px 10px;
+}
+
+.tags-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  overflow-x: auto;
+  padding-bottom: 0.5em;
 }

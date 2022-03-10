@@ -11,7 +11,7 @@
     <%= f.input :days, wrapper_html: { class: "d-none", data: {display_toggle_target: "dayElement" } },
                 collection: Date::DAYNAMES.map { |day_name| [day_name, Date::DAYNAMES.index(day_name)] },
                 as: :check_boxes,
-                label: "",
+                label: false,
                 include_hidden: false,
                 input_html: { class: "tag-selector" },
                 item_wrapper_class: "tag-item"
@@ -25,25 +25,34 @@
     <%= f.input :tag_list, collection: ["👶🏾 family", "🍻 friends", " 🥑 health", "🏖 holidays", "🏠 home", "📖 learning", "📘 reading", "🏃‍♂️ sport", "🧘🏽‍♀️ well-being",  "💻 work", "💰 finance"],
                 as: :check_boxes,
                 include_hidden: false,
-                wrapper_html: { class: "d-none", data: { display_toggle_target: "tagOptionElement"} },
+                legend_tag: false,
+                wrapper_html: { class: "d-none tags-carousel", data: { display_toggle_target: "tagOptionElement"} },
                 input_html: { class: "tag-selector", data: {tag_option_target:"tags", action:"click->task-tag#showTags"} },
                 item_wrapper_class: 'tag-item' %>
 
-    <%= f.input :duration, placeholder: "minutes",
+    <%= f.input :duration, as: :select, collection: [15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180],  prompt: "minutes",
                 input_html: { min: '0', step: '15'},
                 wrapper_html: { class: "d-none", data: {display_toggle_target: "optionElement"} } %>
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between align-items-center">
     <%= f.input :priority, wrapper_html: {class: "d-none"}, input_html: { data: { display_toggle_target: "priorityElement" }, class: "d-none" } %>
+    <i class="far fa-calendar h2 m-2" data-action="click->display-toggle#toggleClassCalendarOptions"></i>
     <i class="fas fa-clock h2 m-2" data-action="click->display-toggle#toggleClassOptions"></i>
     <i class="far fa-star h2 m-2" data-action="click->display-toggle#toggleClassPriority" data-display-toggle-target="priorityStar"></i>
-    <i class="far fa-calendar h2 m-2" data-action="click->display-toggle#toggleClassCalendarOptions"></i>
     <i class="fas fa-tag h3 m-2" data-action="click->display-toggle#toggleClassTagOptions"></i>
     <% unless task.id.nil? %>
       <%= link_to task_path(task), method: :delete, class: "btn-delete h2 m-2" do %>
         <i class="fas fa-trash-alt"></i>
       <% end %>
     <% end %>
-    <%= f.input :habit, as: :boolean, input_html: { data: { action:"click->display-toggle#toggleClassForHabits" }, class: "toggle" }  %>
+
+    <fieldset class="boolean optional task_habit" style="border-left:1px solid #6C6D73;height:30px">
+      <div class="form-check">
+        <input name="task[habit]" type="hidden" value="0">
+        <input class="form-check-input boolean optional toggle" data-action="click->display-toggle#toggleClassForHabits" type="checkbox" value="1" name="task[habit]" id="task_habit">
+        <label class="form-check-label boolean optional" for="task_habit"></label>
+      </div>
+    </fieldset>
+    <%#= f.input :habit, as: :boolean, label: " ", input_html: { data: { action:"click->display-toggle#toggleClassForHabits" }, class: "toggle" }  %>
     </div>
     <%= f.submit task.persisted? ? "Update" : "Add" , class: "btn add-button form-submit-btn" %>
   <% end %>
