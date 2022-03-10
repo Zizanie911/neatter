@@ -21,3 +21,8 @@ a {
 a:hover {
   color: $purple;
 }
+
+body.light-mode {
+  filter:invert(100%);
+  background-color: $white;
+}
