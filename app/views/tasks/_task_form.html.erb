@@ -2,7 +2,7 @@
   url: mark_as_done_task_path(task),
   namespace: "task_#{task.id}",
   html: {
-    class: "form-inline",
+    class: task.mark_as_done? ? "form-inline mark_done_grey" : "form-inline",
     data: {task_form_target: "form", task_id: task.id},
     remote: true
   } do |f|  %>

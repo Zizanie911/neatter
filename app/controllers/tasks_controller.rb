@@ -64,7 +64,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     authorize @task
     respond_to do |format|
-      format.text { render(partial: "tasks/new_task_form", locals: {task: @task }, formats: [:html]) }
+      format.text { render(partial: "tasks/new_task_form", locals: { task: @task }, formats: [:html]) }
     end
   end
 
@@ -87,8 +87,10 @@ class TasksController < ApplicationController
     authorize @task
     @task.mark_as_done = !@task.mark_as_done
     @task.save
-
-    redirect_to tasks_path
+    respond_to do |format|
+      format.text { render("tasks/_task_form", locals: { task: @task }, formats: [:html]) }
+    end
+    # redirect_to tasks_path
   end
 
 

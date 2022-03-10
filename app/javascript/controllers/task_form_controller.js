@@ -1,4 +1,5 @@
 import { Controller } from "stimulus"
+import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
   static targets = [ "formContainer", "button", "form", "closeCross" ]
@@ -10,7 +11,21 @@ export default class extends Controller {
       // Iterer sur chacune des formTarget pour trouver cellle dont le data-task-id
       // correspond à celle de la checkbox
       if (target.dataset.taskId === eventTargetId) {
-        target.requestSubmit();
+        // if (target.requestSubmit) {
+        //   target.requestSubmit();
+        // } else {
+        //   target.submit()
+        // };
+        fetch(target.action, {
+          method: "PATCH",
+          headers: { "Accept": "text/plain", "X-CSRF-Token": csrfToken() },
+          body: new FormData(target)
+        })
+        .then(response=>response.text())
+        .then((data)=>{
+          // console.log(data)
+          target.classList.toggle("mark_done_grey")
+        })
       }
     });
   }
