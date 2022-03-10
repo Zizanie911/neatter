@@ -24,6 +24,7 @@ export default class extends Controller {
         .then(response=>response.text())
         .then((data)=>{
           // console.log(data)
+          target.classList.toggle("mark_done_grey")
         })
       }
     });
