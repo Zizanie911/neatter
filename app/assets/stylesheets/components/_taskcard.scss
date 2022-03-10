@@ -21,3 +21,18 @@
   bottom: 95px;
   z-index: 1;
 }
+
+/// Effect on markAsDone
+
+.mark_done_grey {
+  animation: opacity_down 350ms ease-in forwards;
+}
+
+@keyframes opacity_down {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}

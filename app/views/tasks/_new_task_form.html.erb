@@ -22,7 +22,7 @@
                 wrapper_html: { class: "d-none", data: { display_toggle_target: "calendarOptionElement"}  },
                 input_html: { data: {task_calendar_target:"date", action:"click->task-calendar#showCalendar"}, value: (task.start_at.present? ? task.start_at.strftime("%Y-%m-%dT%H:%M") : Time.now.beginning_of_hour.strftime("%Y-%m-%dT%H:%M")) }
     %>
-    <%= f.input :tag_list, collection: ["👶🏾 family", "🍻 friends", " 🥑 health", "🏖 holidays", "🏠 home", "📖 learning", "📘 reading", "🏃‍♂️ sport", "🧘🏽‍♀️ well-being",  "💻 work" ],
+    <%= f.input :tag_list, collection: ["👶🏾 family", "🍻 friends", " 🥑 health", "🏖 holidays", "🏠 home", "📖 learning", "📘 reading", "🏃‍♂️ sport", "🧘🏽‍♀️ well-being",  "💻 work", "💰 finance"],
                 as: :check_boxes,
                 include_hidden: false,
                 wrapper_html: { class: "d-none", data: { display_toggle_target: "tagOptionElement"} },
@@ -32,7 +32,7 @@
     <%= f.input :duration, placeholder: "minutes",
                 input_html: { min: '0', step: '15'},
                 wrapper_html: { class: "d-none", data: {display_toggle_target: "optionElement"} } %>
-    <%= f.input :habit, as: :boolean, input_html: { data: { action:"click->display-toggle#toggleClassForHabits" }, class: "toggle" }  %>
+    <div class="d-flex justify-content-between">
     <%= f.input :priority, wrapper_html: {class: "d-none"}, input_html: { data: { display_toggle_target: "priorityElement" }, class: "d-none" } %>
     <i class="fas fa-clock h2 m-2" data-action="click->display-toggle#toggleClassOptions"></i>
     <i class="far fa-star h2 m-2" data-action="click->display-toggle#toggleClassPriority" data-display-toggle-target="priorityStar"></i>
@@ -43,6 +43,8 @@
         <i class="fas fa-trash-alt"></i>
       <% end %>
     <% end %>
+    <%= f.input :habit, as: :boolean, input_html: { data: { action:"click->display-toggle#toggleClassForHabits" }, class: "toggle" }  %>
+    </div>
     <%= f.submit task.persisted? ? "Update" : "Add" , class: "btn add-button form-submit-btn" %>
   <% end %>
 </div>
