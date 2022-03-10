@@ -46,8 +46,9 @@
     <% end %>
 
     <fieldset class="boolean optional task_habit" style="border-left:1px solid #6C6D73;height:30px">
-      <div class="form-check">
+      <div class="form-check d-flex align-items-center">
         <input name="task[habit]" type="hidden" value="0">
+        <span class="ms-2">Habit</span>
         <input class="form-check-input boolean optional toggle" data-action="click->display-toggle#toggleClassForHabits" type="checkbox" value="1" name="task[habit]" id="task_habit">
         <label class="form-check-label boolean optional" for="task_habit"></label>
       </div>
