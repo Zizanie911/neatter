@@ -6,7 +6,9 @@
   <div>
   <% today = Date.today %>
     <%  case @opacity_coeff[today] %>
-      <% when (0..0.35) %>
+      <% when 0 %>
+      <h3>What a wonderful chillin' day! 😎 <br> You've done nothing 🦥 </h3>
+      <% when (0.01..0.35) %>
       <h3>What a wonderful chillin' day! 😎 <br> You've done only <span class="achievement"><%= "#{@done_tasks_per_day[today]}" %></span> tasks today!</h3>
       <% when (0.36..0.75) %>
       <h3>Good job! 💪 <br> You made <span class="achievement"><%= "#{(@opacity_coeff[today] * 100).to_i}%" %></span> of your tasks list! </h3>
@@ -25,7 +27,7 @@
         <% @tasks.today.each do |task| %>
           <%= render 'review_task', task: task %>
         <% end %>
-        <%= f.submit "New Day", class:"add-button next-day fixed-bottom" %>
+        <%= f.submit "Go to tomorrow", class:"add-button next-day fixed-bottom" %>
       <% end %>
     </div>
   </ul>
