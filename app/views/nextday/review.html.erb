@@ -7,11 +7,11 @@
   <% today = Date.today %>
     <%  case @opacity_coeff[today] %>
       <% when (0..0.35) %>
-      <h3>What a wonderful chillin' day! 😎 <br> You've done only <%= "#{@done_tasks_per_day[today]}" %> tasks today!</h3>
+      <h3>What a wonderful chillin' day! 😎 <br> You've done only <span class="achievement"><%= "#{@done_tasks_per_day[today]}" %></span> tasks today!</h3>
       <% when (0.36..0.75) %>
-      <h3>Good job! 💪 <br> You made <%= "#{(@opacity_coeff[today] * 100).to_i}%" %> of your tasks list! </h3>
+      <h3>Good job! 💪 <br> You made <span class="achievement"><%= "#{(@opacity_coeff[today] * 100).to_i}%" %></span> of your tasks list! </h3>
       <% when (0.76..1) %>
-      <h3> You rocked it! 🚀 <br> You made <%= "#{(@opacity_coeff[today] * 100).to_i}%" %> of your tasks list!</h3>
+      <h3> You rocked it! 🚀 <br> You made <span class="achievement"><%= "#{(@opacity_coeff[today] * 100).to_i}%" %></span> of your tasks list!</h3>
     <% end %>
   </div>
   <hr>
