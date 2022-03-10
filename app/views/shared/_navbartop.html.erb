@@ -7,32 +7,34 @@
           <%= link_to "Back", :back, class:"" %>
         </div>
       <% else %>
-        <div></div>
-      <% end %>
-
-        <div class="nav-item dropdown">
-          <a class="username-nav" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">  <%= @username %>
-            <svg height="32" viewBox="0 0 21 21" width="32" xmlns="http://www.w3.org/2000/svg"><path d="m6.5 7.5h4l-6 9v-6.997l-4-.003 6-9z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(5 2)"/></svg>
-          </a>
-          <div class="dropdown-menu dropdown-menu-pad" aria-labelledby="navbarDropdown item-navbar">
-            <% if user_signed_in? %>
-            <li class="nav-item active">
-              <%= link_to "Home", root_path, class: "nav-link item-navbar" %>
-            </li>
-            <li class="nav-item active">
-              <%= link_to "Dashboard", profile_path, class: "nav-link item-navbar" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link item-navbar" %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link item-navbar" %>
-            </li>
-          <% end %>
-          </div>
+        <div>
+          <%#= link_to profile_path, class: "fas fa-chart-bar" %>
+          <%if params[:action] == "index"%>
+            <%= link_to profile_path do%>
+              <svg height="21" viewBox="0 0 21 21" width="21" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(3 3)"><path d="m2.5.5h10c1.1045695 0 2 .8954305 2 2v10c0 1.1045695-.8954305 2-2 2h-10c-1.1045695 0-2-.8954305-2-2v-10c0-1.1045695.8954305-2 2-2z"/><path d="m4.5 11.435v-7.935"/><path d="m7.5 11.485v-3.985"/><path d="m10.5 11.5v-6"/></g></svg>
+            <%end%>
+          <%end%>
         </div>
+      <% end %>
+      <div class="nav-item dropdown">
+        <a class="username-nav" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">  <%= @username %>
+          <svg height="32" viewBox="0 0 21 21" width="32" xmlns="http://www.w3.org/2000/svg"><path d="m6.5 7.5h4l-6 9v-6.997l-4-.003 6-9z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(5 2)"/></svg>
+        </a>
+        <div class="dropdown-menu dropdown-menu-pad" aria-labelledby="navbarDropdown item-navbar">
+          <% if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to "Home", root_path, class: "nav-link item-navbar" %>
+          </li>
 
+          <li class="nav-item">
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link item-navbar" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link item-navbar" %>
+          </li>
+        <% end %>
+        </div>
       </div>
     </div>
   </div>
