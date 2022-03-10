@@ -6,9 +6,9 @@
   <div class="div2 task-list" >
     <%= truncate(task.name, length: 25) %>
   </div>
-  <div class="div3" data-controller="postpone-task">
+  <div class="div3 " data-controller="postpone-task" style="position: relative">
     <%= date_field_tag "postpone_task_date[#{task.id}", Date.tomorrow, min: Date.tomorrow.strftime("%Y-%m-%d"), class: "d-none", data: { postpone_task_target: 'calendar' } %>
-    <div>
+    <div class="logo-calendar">
       <%= check_box_tag 'postpone_task_ids[]', task.id, @postponed, id: "postpone_task_ids_#{task.id}", class: "postpone-checkbox" %>
       <%= label_tag "postpone_task_ids_#{task.id}", data: { action: 'click->postpone-task#toggleCalendar' } do %>
         <i class="fas fa-calendar"></i>
