@@ -17,7 +17,7 @@
           <div class="dropdown-menu dropdown-menu-pad" aria-labelledby="navbarDropdown item-navbar">
             <% if user_signed_in? %>
             <li class="nav-item active">
-              <%= link_to "Home", tasks_path, class: "nav-link item-navbar" %>
+              <%= link_to "Home", root_path, class: "nav-link item-navbar" %>
             </li>
             <li class="nav-item active">
               <%= link_to "Dashboard", profile_path, class: "nav-link item-navbar" %>
