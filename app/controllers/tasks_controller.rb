@@ -106,7 +106,7 @@ class TasksController < ApplicationController
     @session = @user.sessions.where(today: Date.today).first_or_initialize
     @session.passed = false
     @session.save!
-
+    authorize @session
     # raise
     redirect_to tasks_path
   end
