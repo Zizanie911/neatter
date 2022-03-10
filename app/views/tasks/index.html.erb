@@ -12,9 +12,16 @@
       <%end%>
     </div>
     <div class="nav-link item-navbar h2 pt-1">
-      <%= link_to review_path, class: "text-nav" do %>
-        <i class="fas fa-angle-double-right"></i>
-      <% end %>
+      <%#if passed == false%>
+        <%= link_to review_path, class: "text-nav" do %>
+          <i class="fas fa-angle-double-right"></i>
+        <% end %>
+      <%#else%>
+        <%#= simple_form_for :display_yesterday, url: reset_path, method: :post do |f| %>
+          <%#= check_box_tag 'session', session.passed %>
+          <%#= label_tag "session", label: false %>
+        <%#end%>
+      <%#end%>
     </div>
   </div>
   <%= render "hey" %>

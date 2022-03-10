@@ -46,4 +46,12 @@ class NextdayController < ApplicationController
 
     redirect_to tasks_path
   end
+
+  def display_yesterday
+    @session = @user.sessions.where(today: Date.today).first_or_initialize
+    @session.passed = false
+    @session.save!
+
+    redirect_to tasks_path
+  end
 end

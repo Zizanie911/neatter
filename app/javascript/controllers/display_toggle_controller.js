@@ -7,7 +7,7 @@ export default class extends Controller {
   }
 
   toggleClassForHabits(event) {
-    console.log(event.currentTarget);
+    // console.log(event.currentTarget);
     this.dayElementTargets.forEach(element => element.classList.toggle("d-none"));
   }
 

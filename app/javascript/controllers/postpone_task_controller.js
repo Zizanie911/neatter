@@ -4,8 +4,8 @@ export default class extends Controller {
   static targets = ["calendar", "markAsDoneBtn", "postponeBtn", "submitBtn"]
 
   connect() {
-    console.log(this.postponeBtnTarget);
-    console.log(this.calendarTarget);
+    // console.log(this.postponeBtnTarget);
+    // console.log(this.calendarTarget);
   }
 
   markAsDone() {
