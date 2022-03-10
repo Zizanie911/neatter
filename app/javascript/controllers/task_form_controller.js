@@ -21,24 +21,24 @@ export default class extends Controller {
   }
 
   toggleForm(event) {
-    fetch(event.currentTarget.dataset.path, {
-      headers: {
-        accept: "text/plain"
-      }
-    }).then(response => response.text())
-    .then((data) => {
-      this.formContainerTarget.classList.remove("form-visible");
-      if (this.formContainerTarget.innerHTML === "") {
-        this.formContainerTarget.innerHTML = data;
-        this.formContainerTarget.classList.add("form-visible");
-        this.buttonTarget.classList.add("d-none");
-      } else {
-        setTimeout(() => {
+      fetch(event.currentTarget.dataset.path, {
+        headers: {
+          accept: "text/plain"
+        }
+      }).then(response => response.text())
+      .then((data) => {
+        this.formContainerTarget.classList.remove("form-visible");
+        if (this.formContainerTarget.innerHTML === "") {
           this.formContainerTarget.innerHTML = data;
           this.formContainerTarget.classList.add("form-visible");
-        }, 150);
-      }
-    })
+          this.buttonTarget.classList.add("d-none");
+        } else {
+          setTimeout(() => {
+            this.formContainerTarget.innerHTML = data;
+            this.formContainerTarget.classList.add("form-visible");
+          }, 150);
+        }
+      })
   }
 
   closeForm() {
