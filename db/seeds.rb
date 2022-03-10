@@ -34,6 +34,7 @@ task = Task.new(
   # duration: 45
 )
 task.user = user
+task.tag_list.add("📖 learning")
 task.save!
 
 task = Task.new(
@@ -56,6 +57,7 @@ task = Task.new(
   mark_as_done: true
 )
 task.user = user
+task.tag_list.add("💻 work")
 task.save!
 
 task = Task.new(
@@ -66,6 +68,7 @@ task = Task.new(
   start_at: Date.today
 )
 task.user = user
+task.tag_list.add("💻 work")
 task.save!
 
 task = Task.new(
@@ -74,6 +77,7 @@ task = Task.new(
   start_at: Date.today
 )
 task.user = user
+task.tag_list.add("🏖 holidays")
 task.save!
 
 task = Task.new(
@@ -85,6 +89,7 @@ task = Task.new(
   days: [1, 2, 3, 5, 6]
 )
 task.user = user
+task.tag_list.add("🧘🏽‍♀️ well-being")
 task.save!
 
 task = Task.new(
@@ -96,6 +101,7 @@ task = Task.new(
   days: [1, 2, 3, 5, 6]
 )
 task.user = user
+task.tag_list.add("🧘🏽‍♀️ well-being")
 task.save!
 
 task = Task.new(
@@ -107,6 +113,7 @@ task = Task.new(
   days: [1, 2, 3, 5, 6]
 )
 task.user = user
+task.tag_list.add("📖 learning")
 task.save!
 
 task = Task.new(
@@ -118,6 +125,7 @@ task = Task.new(
   days: [1, 2, 3, 5, 6]
 )
 task.user = user
+task.tag_list.add(" 🥑 health", "🏃‍♂️ sport")
 task.save!
 
 puts "Creating 1 user and 3 tasks yesterday ..."
