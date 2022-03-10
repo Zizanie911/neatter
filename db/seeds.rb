@@ -33,10 +33,9 @@ puts "Today - Thursday, March 10th - Creating 10 tasks..."
 
 task = Task.new(
   name: "Flashcards",
-  details: "",
-  priority: false,
-  start_at: Time.parse("#{Date.today} 16:00")
-  # duration: 45
+  priority: true,
+  start_at: Time.parse("#{Date.today}"),
+  duration: 45
 )
 task.user = user
 task.tag_list.add("📖 learning")
@@ -44,48 +43,10 @@ task.save!
 
 task = Task.new(
   name: "Buy new shirt",
-  details: "",
-  priority: false,
-  start_at: Time.parse("#{Date.today} 16:00"),
-  duration: 45,
-  days: [2, 4]
+  start_at: Time.parse("#{Date.today}"),
+  duration: 45
 )
 task.user = user
-task.save!
-
-task = Task.new(
-  name: "Running",
-  details: "don't forget your mat!",
-  priority: false,
-  start_at: Time.parse("#{Date.today} 16:00"),
-  duration: 45,
-  mark_as_done: true,
-  days: [2, 3, 4, 5]
-)
-task.user = user
-task.save!
-task = Task.new(
-  name: "play guitar",
-  details: "Rock and Roll",
-  priority: false,
-  start_at: Time.parse("#{Date.today} 16:00"),
-  duration: 45,
-  mark_as_done: true,
-  days: [2, 3, 4, 5]
-)
-task.user = user
-task.tag_list.add("💻 work")
-task.save!
-
-task = Task.new(
-  name: "Send email to Matthieu",
-  details: "matthieu@gmail.com",
-  mark_as_done: true,
-  priority: true,
-  start_at: Date.today
-)
-task.user = user
-task.tag_list.add("💻 work")
 task.save!
 
 task = Task.new(
@@ -111,8 +72,6 @@ task.save!
 
 task = Task.new(
   name: "Meditate",
-  details: "",
-  priority: false,
   mark_as_done: true,
   start_at: Date.today,
   days: [1, 2, 3, 5, 6]
@@ -123,8 +82,6 @@ task.save!
 
 task = Task.new(
   name: "Learn Portuguese",
-  details: "",
-  priority: false,
   mark_as_done: false,
   start_at: Date.today,
   days: [1, 2, 3, 5, 6]
@@ -135,8 +92,6 @@ task.save!
 
 task = Task.new(
   name: "Running",
-  details: "",
-  priority: false,
   mark_as_done: false,
   start_at: Date.today,
   days: [1, 2, 3, 5, 6]
@@ -144,6 +99,8 @@ task = Task.new(
 task.user = user
 task.tag_list.add(" 🥑 health", "🏃‍♂️ sport")
 task.save!
+
+
 
 puts "Yesterday - Wednesday, March 9th"
 puts "Tasks..."
