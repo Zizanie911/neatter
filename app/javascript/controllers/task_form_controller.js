@@ -10,7 +10,11 @@ export default class extends Controller {
       // Iterer sur chacune des formTarget pour trouver cellle dont le data-task-id
       // correspond à celle de la checkbox
       if (target.dataset.taskId === eventTargetId) {
-        target.requestSubmit();
+        if (target.requestSubmit) {
+          target.requestSubmit();
+        } else {
+          target.submit();
+        }
       }
     });
   }
