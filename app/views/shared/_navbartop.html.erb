@@ -1,7 +1,7 @@
 <div class="container border-bottom border-secondary">
   <div>
     <div class="d-flex justify-content-between align-center py-3">
-      <% if controller_name == "nextday" || params[:action] == "profile" %>
+      <% if controller_name == "nextday" || params[:action] == "profile" || params[:action] == "create" %>
         <div>
           <i class="fas fa-angle-left"></i>
           <%= link_to "Back", :back, class:"" %>
@@ -27,10 +27,9 @@
           </li>
 
           <li class="nav-item">
-            <%= link_to switch_mode_path, class: "nav-link item-navbar", data: { controller: "color-mode", action:"click->color-mode#toggleColor" }, remote: true do %>
+            <%= link_to switch_mode_path(url: request.fullpath), class: "nav-link item-navbar" do %>
               <i class="fas fa-moon"></i><i class="fas fa-arrows-alt-h"></i> <i class="fas fa-sun"></i>
             <% end %>
-            <!-- <p class="nav-link item-navbar" data-controller="color-mode" data-action="click->color-mode#toggleColor"><i class="fas fa-moon"></i><i class="fas fa-arrows-alt-h"></i> <i class="fas fa-sun"></i></p> -->
           </li>
 
           <li class="nav-item">
