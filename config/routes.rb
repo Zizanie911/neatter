@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post "reset", to: 'nextday#reset', as: :reset
   post "yesterday", to: 'tasks#yesterday', as: :yesterday
   get '/tagged', to: "tasks#tagged", as: :tagged
+  get 'switch_mode', to: "pages#switch_mode"
 
 end
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
