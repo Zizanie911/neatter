@@ -25,6 +25,7 @@ class TasksController < ApplicationController
   end
 
   def create
+    @username = current_user.username
     @task = Task.new(task_params)
     @task.user = current_user
     if task_params[:tag_list].present?
