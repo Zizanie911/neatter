@@ -16,6 +16,9 @@
 a {
   color: $white;
   text-decoration: none;
+  &:focus, &:focus-visible {
+    outline: 0;
+  }
 }
 
 a:hover {
