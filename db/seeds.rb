@@ -51,6 +51,16 @@ task.user = user
 task.save!
 
 task = Task.new(
+  name: "Prepare pitch",
+  priority: true,
+  start_at: Time.parse("#{Date.today}"),
+  duration: 45
+)
+task.tag_list.add("💻 work")
+task.user = user
+task.save!
+
+task = Task.new(
   name: "Lunch with the team",
   priority: false,
   start_at: Date.today,
@@ -82,9 +92,8 @@ task.save!
 
 task = Task.new(
   name: "Yoga",
-  details: "",
   priority: false,
-  mark_as_done: false,
+  mark_as_done: true,
   start_at: Date.today,
   duration: 30,
   days: [1, 2, 3, 5, 6]
@@ -123,7 +132,7 @@ task = Task.new(
   days: [1, 2, 3, 5, 6]
 )
 task.user = user
-task.tag_list.add(" 🥑 health", "🏃‍♂️ sport")
+task.tag_list.add("🥑 health", "🏃‍♂️ sport")
 task.save!
 
 puts "Yesterday - Thursday, March 10th"
