@@ -27,10 +27,9 @@
           </li>
 
           <li class="nav-item">
-            <%= link_to switch_mode_path, class: "nav-link item-navbar", data: { controller: "color-mode", action:"click->color-mode#toggleColor" }, remote: true do %>
+            <%= link_to switch_mode_path(url: request.fullpath), class: "nav-link item-navbar" do %>
               <i class="fas fa-moon"></i><i class="fas fa-arrows-alt-h"></i> <i class="fas fa-sun"></i>
             <% end %>
-            <!-- <p class="nav-link item-navbar" data-controller="color-mode" data-action="click->color-mode#toggleColor"><i class="fas fa-moon"></i><i class="fas fa-arrows-alt-h"></i> <i class="fas fa-sun"></i></p> -->
           </li>
 
           <li class="nav-item">
