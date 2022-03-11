@@ -29,7 +29,7 @@ session.save!
 
 puts "*** This week ***"
 
-puts "Today - Thursday, March 10th - Creating 10 tasks..."
+puts "Today - Friday, March 11th - Creating 10 tasks..."
 
 task = Task.new(
   name: "Flashcards",
@@ -126,9 +126,26 @@ task.user = user
 task.tag_list.add(" 🥑 health", "🏃‍♂️ sport")
 task.save!
 
+puts "Yesterday - Thursday, March 10th"
+
+task = Task.new(
+  name: "Buy Soda",
+  mark_as_done: true,
+  start_at: Date.parse("10/03/2022")
+)
+task.user = user
+task.save!
+
+task = Task.new(
+  name: "Buy Soda",
+  mark_as_done: false,
+  start_at: Date.parse("10/03/2022")
+)
+task.user = user
+task.save!
 
 
-puts "Yesterday - Wednesday, March 9th"
+puts "Wednesday, March 9th"
 puts "Tasks..."
 
 task = Task.new(
