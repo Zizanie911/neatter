@@ -3,4 +3,10 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def switch_mode
+    current_user.dark_mode = !current_user.dark_mode
+    current_user.save
+  end
+
 end
